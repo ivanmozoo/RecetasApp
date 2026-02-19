@@ -7,6 +7,13 @@
 Los usuarios pueden ver distintas recetas desde la página principal o añadir las suyas propias mediante un formulario de creación.  
 Una vez creada, la receta se muestra en el listado principal junto a las demás.
 
+La aplicación está creada en Angular y usa como tecnologías:
+
+- TypeScript
+- JavaScript
+- CSS Plano
+- Bootstrap
+
 ---
 
 ## ⚙️ Funcionalidades

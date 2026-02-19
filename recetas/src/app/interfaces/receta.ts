@@ -6,8 +6,8 @@ export interface Receta {
     ingredientes: string[];
     pasos: string[];
     tipo: 'desayuno' | 'comida' 
-    | 'cena' | 'postre' 
-    | 'merienda' | 'bebida' 
-    | 'almuerzo';
+        | 'cena'     | 'postre' 
+        | 'merienda' | 'bebida' 
+        | 'almuerzo';
 
 }
