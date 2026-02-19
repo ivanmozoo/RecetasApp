@@ -1,0 +1,7 @@
+.form-control {
+  transition: all 0.3s ease-in-out;
+}
+
+.form-control:hover {
+  border-color: rgb(0, 0, 0); 
+}
