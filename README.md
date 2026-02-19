@@ -63,7 +63,7 @@ Al enviar el formulario, se añade la receta al listado principal.
 
 ## ✏️ Mockup del proyecto
 
-![Vistas del proyecto](recetas/src/assets/images/mockup.png)
+![Vistas del proyecto](recetas/public/assets/mockup.png)
 
 ---
 
