@@ -13,7 +13,7 @@ import { IngredienteFilterPipe } from '../../pipes/ingrediente-filter-pipe';
 export class RecetasShow {
 
   filterSearch = ''
-  filterIngrediente: string = ''
+  filterIngrediente = ''
 
   recetas: Receta[] = [{
     id: '1',

@@ -8,6 +8,9 @@
                     </span>
                     <input type="text" class="form-control" placeholder="Buscar por ingrediente"
                         aria-label="Buscar por ingrediente" [(ngModel)]="filterIngrediente">
+                    <button class="btn btn-outline-secondary" type="button" (click)="filterIngrediente = ''">
+                        <i class="bi bi-x-lg"></i>
+                    </button>
                 </div>
             </div>
             <div class="col-md-5 me-2">
@@ -17,6 +20,9 @@
                     </span>
                     <input type="text" class="form-control" placeholder="Buscar por nombre"
                         aria-label="Buscar por nombre" [(ngModel)]="filterSearch">
+                    <button class="btn btn-outline-secondary" type="button" (click)="filterSearch = ''">
+                        <i class="bi bi-x-lg"></i>
+                    </button>
                 </div>
             </div>
         </div>
