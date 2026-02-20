@@ -16,8 +16,8 @@ export class RecetaFilterPipe implements PipeTransform {
   }
 
   includesText(originalText: string, text: string): boolean {
-    const lowercaseOriginal = originalText.toLocaleLowerCase()
-    const lowercaseText = text.toLocaleLowerCase()
+    const lowercaseOriginal = originalText.toLocaleLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+    const lowercaseText = text.toLocaleLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")
     return lowercaseOriginal.includes(lowercaseText)
   }
 
