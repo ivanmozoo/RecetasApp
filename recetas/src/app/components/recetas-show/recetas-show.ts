@@ -1,13 +1,18 @@
 import { Component } from '@angular/core';
 import { Receta } from '../../interfaces/receta';
+import { FormsModule } from '@angular/forms';
+import { RecetaFilterPipe } from '../../pipes/receta-filter-pipe';
 
 @Component({
   selector: 'app-recetas-show',
-  imports: [],
+  imports: [FormsModule, RecetaFilterPipe],
   templateUrl: './recetas-show.html',
   styleUrl: './recetas-show.css',
 })
 export class RecetasShow {
+
+  filterSearch = ''
+
   recetas: Receta[] = [{
     id: '1',
     nombre: 'Espaguetis a la carbonara',
