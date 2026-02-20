@@ -5,9 +5,29 @@
 }
 
 .receta-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+  cursor: pointer;
 }
 
 .receta-img {
   height: 220px;
+}
+
+.busqueda {
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.form-control {
+  transition: all 0.2s ease-in-out;
+}
+
+.form-control:hover {
+  border-color: rgb(153, 214, 255);
+}
+
+.form-control:focus {
+  border-color: rgb(153, 214, 255);
+  box-shadow: 0 0 0 0.2rem rgba(153, 214, 255, 0.25);
 }

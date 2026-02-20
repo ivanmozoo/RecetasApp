@@ -1,4 +1,4 @@
-<nav class="bg-light py-3 mt-3 shadow-sm">
+<nav class="bg-light py-3 mt-3 shadow-sm busqueda">
     <div class="container">
         <div class="row justify-content-between">
             <div class="col-md-5 ms-2">
@@ -33,12 +33,12 @@
                 <span class="badge bg-dark mb-2 align-self-start text-capitalize">
                     {{receta.tipo}}
                 </span>
-                <h4 class="card-title fw-bold">{{receta.nombre}}</h4>
-                <ul class="list-unstyled fw-bold small text-secondary mb-4">
+                <h4 class="card-title fw-bold mb-3">{{receta.nombre}}</h4>
+                <!-- <ul class="list-unstyled fw-bold small text-secondary mb-4">
                     @for (ingrediente of receta.ingredientes; track $index) {
                     <li>• {{ingrediente}}</li>
                     }
-                </ul>
+                </ul> -->
             </div>
         </div>
     </div>
