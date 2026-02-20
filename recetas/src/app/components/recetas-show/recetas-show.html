@@ -27,15 +27,25 @@
     @if (recetas && recetas.length) {
     @for (receta of recetas; track receta.id) {
     <div class="col">
-        <div class="card h-100 shadow-sm">
-            <img [src]="receta.imagen" class="card-img-top" [alt]="receta.nombre">
-            <div class="card-body">
-                <h5 class="card-title">{{receta.nombre}}</h5>
+        <div class="card h-100 bg-light shadow-sm border-0 receta-card">
+            <img [src]="receta.imagen" class="card-img-top receta-img" [alt]="receta.nombre">
+            <div class="card-body d-flex flex-column">
+                <span class="badge bg-dark mb-2 align-self-start text-capitalize">
+                    {{receta.tipo}}
+                </span>
+                <h4 class="card-title fw-bold">{{receta.nombre}}</h4>
+                <ul class="list-unstyled fw-bold small text-secondary mb-4">
+                    @for (ingrediente of receta.ingredientes; track $index) {
+                    <li>• {{ingrediente}}</li>
+                    }
+                </ul>
             </div>
         </div>
     </div>
     }
     } @else {
-    <h3>No hay recetas disponibles</h3>
+    <div class="text-center mt-5">
+        <h3 class="text-muted">No hay recetas disponibles</h3>
+    </div>
     }
 </div>

@@ -1,7 +1,13 @@
-.form-control {
-  transition: all 0.3s ease-in-out;
+.receta-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border-radius: 15px;
+  overflow: hidden;
 }
 
-.form-control:hover {
-  border-color: rgb(0, 0, 0); 
+.receta-card:hover {
+  transform: translateY(-5px);
+}
+
+.receta-img {
+  height: 220px;
 }

@@ -40,5 +40,37 @@ export class RecetasShow {
       'Dejar enfriar antes de servir.'
     ],
     tipo: 'postre',
-  },]
+  },
+  {
+    id: '3',
+    nombre: 'Smoothie de frutas',
+    imagen: 'assets/smoothie-frutas.jpeg',
+    descripcion: 'Bebida refrescante y saludable a base de frutas naturales.',
+    ingredientes: ['Plátano', 'Fresas', 'Mango', 'Leche o yogur', 'Miel'],
+    pasos: [
+      'Lavar y pelar las frutas según corresponda.',
+      'Cortar las frutas en trozos pequeños.',
+      'Añadir las frutas al vaso de la licuadora junto con la leche o yogur.',
+      'Licuar hasta obtener una mezcla homogénea.',
+      'Añadir miel al gusto y mezclar nuevamente.',
+      'Servir frío en un vaso grande.'
+    ],
+    tipo: 'bebida',
+  },
+  {
+    id: '4',
+    nombre: 'Ensalada César',
+    imagen: 'assets/ensalada-cesar.jpeg',
+    descripcion: 'Ensalada clásica con lechuga, pollo y aderezo César.',
+    ingredientes: ['Lechuga romana', 'Pechuga de pollo', 'Crutones', 'Queso parmesano', 'Aderezo César'],
+    pasos: [
+      'Cocer la pechuga de pollo a la plancha y cortarla en tiras.',
+      'Lavar y trocear la lechuga.',
+      'Mezclar la lechuga con los crutones y el pollo.',
+      'Añadir el aderezo César al gusto y mezclar bien.',
+      'Espolvorear con queso parmesano rallado antes de servir.'
+    ],
+    tipo: 'comida',
+  }
+  ];
 }
