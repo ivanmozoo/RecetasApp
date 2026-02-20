@@ -1,12 +1,25 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import { Receta } from '../interfaces/receta';
 
 @Pipe({
   name: 'ingredienteFilter',
 })
 export class IngredienteFilterPipe implements PipeTransform {
 
-  transform(value: unknown, ...args: unknown[]): unknown {
-    return null;
+  transform(recetas: Receta[], filterBy: string): Receta[] {
+    if (filterBy) {
+      return recetas.filter((receta: Receta) => {
+        return receta.ingredientes.some((ingrediente: string) =>
+          this.includesText(ingrediente, filterBy)
+        )
+      })
+    }
+    return recetas
   }
 
+  includesText(originalText: string, text: string): boolean {
+    const lowercaseOriginal = originalText.toLocaleLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim()
+    const lowercaseText = text.toLocaleLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim()
+    return lowercaseOriginal.includes(lowercaseText)
+  }
 }

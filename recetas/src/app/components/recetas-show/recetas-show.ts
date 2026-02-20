@@ -2,16 +2,18 @@ import { Component } from '@angular/core';
 import { Receta } from '../../interfaces/receta';
 import { FormsModule } from '@angular/forms';
 import { RecetaFilterPipe } from '../../pipes/receta-filter-pipe';
+import { IngredienteFilterPipe } from '../../pipes/ingrediente-filter-pipe';
 
 @Component({
   selector: 'app-recetas-show',
-  imports: [FormsModule, RecetaFilterPipe],
+  imports: [FormsModule, RecetaFilterPipe, IngredienteFilterPipe],
   templateUrl: './recetas-show.html',
   styleUrl: './recetas-show.css',
 })
 export class RecetasShow {
 
   filterSearch = ''
+  filterIngrediente: string = ''
 
   recetas: Receta[] = [{
     id: '1',
