@@ -7,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrl: './recetas-navbar.css',
 })
 export class RecetasNavbar {
-
+  title = 'RECETAS';
+  btnLogin = 'LOGIN';
+  btnRegistro = 'REGISTRO';
 }

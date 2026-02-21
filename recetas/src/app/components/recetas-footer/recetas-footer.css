@@ -1,0 +1,14 @@
+.footer-text {
+  color: rgb(187, 187, 187);
+}
+
+.social-icon {
+  color: rgb(187, 187, 187);
+  font-size: 1.6rem;
+  transition: 0.3s ease;
+}
+
+.social-icon:hover {
+  color: rgb(77, 171, 247);
+  transform: translateY(-3px);
+}
