@@ -42,11 +42,11 @@
   transition: all 0.2s ease-in-out;
 }
 
-.form-control:hover {
+.form-control:hover, .form-select:hover {
   border-color: rgb(153, 214, 255);
 }
 
-.form-control:focus {
+.form-control:focus, .form-select:focus {
   border-color: rgb(153, 214, 255);
   box-shadow: 0 0 0 0.2rem rgba(153, 214, 255, 0.25);
 }
