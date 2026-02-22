@@ -4,10 +4,11 @@ import { FormsModule } from '@angular/forms';
 import { RecetaFilterPipe } from '../../pipes/receta-filter-pipe';
 import { IngredienteFilterPipe } from '../../pipes/ingrediente-filter-pipe';
 import { TipoSelectPipe } from '../../pipes/tipo-select-pipe';
+import { ItemReceta } from "../item-receta/item-receta";
 
 @Component({
   selector: 'app-recetas-show',
-  imports: [FormsModule, RecetaFilterPipe, IngredienteFilterPipe, TipoSelectPipe],
+  imports: [FormsModule, RecetaFilterPipe, IngredienteFilterPipe, TipoSelectPipe, ItemReceta],
   templateUrl: './recetas-show.html',
   styleUrl: './recetas-show.css',
 })

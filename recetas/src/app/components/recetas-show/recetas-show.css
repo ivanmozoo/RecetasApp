@@ -1,37 +1,4 @@
-.receta-card {
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  border-radius: 15px;
-  overflow: hidden;
-  animation: fadeInUp 0.4s ease;
-  
-}
 
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.receta-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 25px rgba(0,0,0,0.15);
-  cursor: pointer;
-}
-
-.badge {
-  letter-spacing: 1px;
-  padding: 6px 10px;
-  border-radius: 20px;
-}
-
-.receta-img {
-  height: 240px;
-}
 
 .busqueda {
   border-radius: 15px;
