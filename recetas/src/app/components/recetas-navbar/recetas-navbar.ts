@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-recetas-navbar',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './recetas-navbar.html',
   styleUrl: './recetas-navbar.css',
 })

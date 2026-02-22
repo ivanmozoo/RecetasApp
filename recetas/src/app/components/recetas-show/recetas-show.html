@@ -1,59 +1,61 @@
-<nav class="bg-light py-3 mt-3 shadow-sm busqueda">
-    <div class="container">
-        <div class="row justify-content-between">
-            <div class="col-12 col-md-6 mb-3 mb-md-0">
-                <div class="input-group shadow-sm">
-                    <span class="input-group-text bg-white">
-                        <i class="bi bi-basket"></i>
-                    </span>
-                    <input type="text" class="form-control" placeholder="Buscar por ingrediente"
-                        aria-label="Buscar por ingrediente" [(ngModel)]="filterIngrediente">
-                    <button class="btn btn-outline-secondary" type="button" (click)="filterIngrediente = ''">
-                        <i class="bi bi-x-lg"></i>
-                    </button>
+<div class="container flex-grow-1">
+    <nav class="bg-light py-3 mt-3 shadow-sm busqueda">
+        <div class="container">
+            <div class="row justify-content-between">
+                <div class="col-12 col-md-6 mb-3 mb-md-0">
+                    <div class="input-group shadow-sm">
+                        <span class="input-group-text bg-white">
+                            <i class="bi bi-basket"></i>
+                        </span>
+                        <input type="text" class="form-control" placeholder="Buscar por ingrediente"
+                            aria-label="Buscar por ingrediente" [(ngModel)]="filterIngrediente">
+                        <button class="btn btn-outline-secondary" type="button" (click)="filterIngrediente = ''">
+                            <i class="bi bi-x-lg"></i>
+                        </button>
+                    </div>
                 </div>
-            </div>
-            <div class="col-12 col-md-6">
-                <div class="input-group shadow-sm">
-                    <span class="input-group-text bg-white">
-                        <i class="bi bi-search"></i>
-                    </span>
-                    <input type="text" class="form-control" placeholder="Buscar por nombre"
-                        aria-label="Buscar por nombre" [(ngModel)]="filterSearch">
-                    <button class="btn btn-outline-secondary" type="button" (click)="filterSearch = ''">
-                        <i class="bi bi-x-lg"></i>
-                    </button>
+                <div class="col-12 col-md-6">
+                    <div class="input-group shadow-sm">
+                        <span class="input-group-text bg-white">
+                            <i class="bi bi-search"></i>
+                        </span>
+                        <input type="text" class="form-control" placeholder="Buscar por nombre"
+                            aria-label="Buscar por nombre" [(ngModel)]="filterSearch">
+                        <button class="btn btn-outline-secondary" type="button" (click)="filterSearch = ''">
+                            <i class="bi bi-x-lg"></i>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</nav>
+    </nav>
 
-@let recetasFiltradas = (recetas | recetaFilter:filterSearch | ingredienteFilter:filterIngrediente);
+    @let recetasFiltradas = (recetas | recetaFilter:filterSearch | ingredienteFilter:filterIngrediente);
 
-<div class="mb-5 mt-3 row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4">
-    @if (recetasFiltradas.length) {
-    @for (receta of recetasFiltradas; track receta.id) {
-    <div class="col">
-        <div class="card h-100 bg-light shadow-sm border-0 receta-card">
-            <img [src]="receta.imagen" class="card-img-top receta-img" [alt]="receta.nombre">
-            <div class="card-body d-flex flex-column">
-                <span class="badge bg-dark mb-2 align-self-start text-capitalize">
-                    {{receta.tipo}}
-                </span>
-                <h4 class="card-title fw-bold mb-3">{{receta.nombre}}</h4>
-                <!-- <ul class="list-unstyled fw-bold small text-secondary mb-4">
+    <div class="mb-5 mt-3 row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4">
+        @if (recetasFiltradas.length) {
+        @for (receta of recetasFiltradas; track receta.id) {
+        <div class="col">
+            <div class="card h-100 bg-light shadow-sm border-0 receta-card">
+                <img [src]="receta.imagen" class="card-img-top receta-img" [alt]="receta.nombre">
+                <div class="card-body d-flex flex-column">
+                    <span class="badge bg-dark mb-2 align-self-start text-capitalize">
+                        {{receta.tipo}}
+                    </span>
+                    <h4 class="card-title fw-bold mb-3">{{receta.nombre}}</h4>
+                    <!-- <ul class="list-unstyled fw-bold small text-secondary mb-4">
                     @for (ingrediente of receta.ingredientes; track $index) {
                     <li>• {{ingrediente}}</li>
                     }
                 </ul> -->
+                </div>
             </div>
         </div>
+        }
+        } @else {
+        <div class="text-center mt-5">
+            <h3 class="text-muted">No hay recetas disponibles</h3>
+        </div>
+        }
     </div>
-    }
-    } @else {
-    <div class="text-center mt-5">
-        <h3 class="text-muted">No hay recetas disponibles</h3>
-    </div>
-    }
 </div>
