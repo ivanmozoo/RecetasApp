@@ -3,10 +3,11 @@ import { Receta } from '../../interfaces/receta';
 import { FormsModule } from '@angular/forms';
 import { RecetaFilterPipe } from '../../pipes/receta-filter-pipe';
 import { IngredienteFilterPipe } from '../../pipes/ingrediente-filter-pipe';
+import { TipoSelectPipe } from '../../pipes/tipo-select-pipe';
 
 @Component({
   selector: 'app-recetas-show',
-  imports: [FormsModule, RecetaFilterPipe, IngredienteFilterPipe],
+  imports: [FormsModule, RecetaFilterPipe, IngredienteFilterPipe, TipoSelectPipe],
   templateUrl: './recetas-show.html',
   styleUrl: './recetas-show.css',
 })
@@ -14,6 +15,7 @@ export class RecetasShow {
 
   filterSearch = ''
   filterIngrediente = ''
+  selectTipo = '';
 
   recetas: Receta[] = [{
     id: '1',

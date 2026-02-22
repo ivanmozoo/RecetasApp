@@ -34,8 +34,15 @@
                         <span class="input-group-text bg-white">
                             <i class="bi bi-funnel"></i>
                         </span>
-                        <select class="form-select">
+                        <select class="form-select" [(ngModel)]="selectTipo">
                             <option value="">Todos</option>
+                            <option value="desayuno">Desayuno</option>
+                            <option value="cena">Cena</option>
+                            <option value="merienda">Merienda</option>
+                            <option value="almuerzo">Almuerzo</option>
+                            <option value="comida">Comida</option>
+                            <option value="postre">Postre</option>
+                            <option value="bebida">Bebida</option>
                         </select>
                     </div>
                 </div>
@@ -43,7 +50,7 @@
         </div>
     </nav>
 
-    @let recetasFiltradas = (recetas | recetaFilter:filterSearch | ingredienteFilter:filterIngrediente);
+    @let recetasFiltradas = (recetas | recetaFilter:filterSearch | ingredienteFilter:filterIngrediente | tipoSelect:selectTipo);
 
     <div class="mb-5 mt-3 row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 g-4">
         @if (recetasFiltradas.length) {
