@@ -1,4 +1,4 @@
-<div class="container flex-grow-1">
+<div class="container-fluid flex-grow-1 px-5 recetas-wrapper">
     <nav class="bg-light py-3 mt-3 shadow-sm busqueda">
         <div class="container">
             <div class="row justify-content-between">
@@ -32,7 +32,7 @@
 
     @let recetasFiltradas = (recetas | recetaFilter:filterSearch | ingredienteFilter:filterIngrediente);
 
-    <div class="mb-5 mt-3 row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4">
+    <div class="mb-5 mt-3 row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 g-4">
         @if (recetasFiltradas.length) {
         @for (receta of recetasFiltradas; track receta.id) {
         <div class="col">
