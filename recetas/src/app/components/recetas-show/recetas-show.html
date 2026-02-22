@@ -56,7 +56,7 @@
     <div class="mb-5 mt-3 row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 g-4">
         @if (recetasFiltradas.length) {
         @for (receta of recetasFiltradas; track receta.id) {
-        <div class="col">
+        <div class="col" routerLink="/receta-detalle">
             <app-item-receta [receta]="receta"></app-item-receta>
         </div>
         }
