@@ -8,6 +8,18 @@
   font-size: 2rem;
   letter-spacing: 2px;
   transition: 0.3s ease;
+  color: rgb(33, 37, 41);
+  filter:
+    drop-shadow(-2px -2px 0 white) drop-shadow(2px -2px 0 white) drop-shadow(-2px 2px 0 white) drop-shadow(2px 2px 0 white);
+}
+
+.navbar-brand {
+  transition: transform 0.3s ease, text-shadow 0.3s ease;
+}
+
+.navbar-brand:hover {
+  transform: scale(1.1);
+  text-shadow: 3px 3px 8px rgba(0,0,0,0.7);
 }
 
 .botones-nav .btn {
