@@ -13,12 +13,12 @@ export class RecetaDetalle {
   receta!: Receta;
 
   constructor(
-  private route: ActivatedRoute,
-  private recetasService: Recetas
-) {}
+    private route: ActivatedRoute,
+    private recetasService: Recetas
+  ) { }
 
-ngOnInit() {
-  const id = this.route.snapshot.paramMap.get('id')!;
-  this.receta = this.recetasService.getRecetaById(id)!;
-}
+  ngOnInit() {
+    const id = this.route.snapshot.paramMap.get('id')!;
+    this.receta = this.recetasService.getRecetaById(id)!;
+  }
 }

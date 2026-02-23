@@ -3,8 +3,8 @@
         <div class="container">
             <div class="row g-3 align-items-end">
 
-                <div class="col-12 col-md-4">
-                    <div class="input-group shadow-sm">
+                <div class="col-12 col-md-3">
+                    <div class="input-group shadow-sm" title="Buscar por ingrediente">
                         <span class="input-group-text bg-white">
                             <i class="bi bi-basket"></i>
                         </span>
@@ -16,8 +16,8 @@
                     </div>
                 </div>
 
-                <div class="col-12 col-md-5">
-                    <div class="input-group shadow-sm">
+                <div class="col-12 col-md-4">
+                    <div class="input-group shadow-sm" title="Buscar por nombre">
                         <span class="input-group-text bg-white">
                             <i class="bi bi-search"></i>
                         </span>
@@ -30,9 +30,9 @@
                 </div>
 
                 <div class="col-12 col-md-3">
-                    <div class="input-group shadow-sm">
+                    <div class="input-group shadow-sm" title="Filtrar por tipo">
                         <span class="input-group-text bg-white">
-                            <i class="bi bi-funnel me-2"></i> Tipo
+                            <i class="bi bi-funnel"></i>
                         </span>
                         <select class="form-select" [(ngModel)]="selectTipo">
                             <option value="">Todos</option>
@@ -46,6 +46,12 @@
                         </select>
                     </div>
                 </div>
+
+                <div class="col-12 col-md-2 d-flex align-items-end">
+                    <button mat-fab color="primary" title="Crear receta" class="shadow-sm crear-btn">
+                        Crear receta
+                    </button>
+                </div>
             </div>
         </div>
     </nav>
@@ -56,7 +62,7 @@
     <div class="mb-5 mt-3 row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 g-4">
         @if (recetasFiltradas.length) {
         @for (receta of recetasFiltradas; track receta.id) {
-        <div class="col" [routerLink]="['/receta-detalle', receta.id]">
+        <div class="col" title="Ver receta" [routerLink]="['/receta-detalle', receta.id]">
             <app-item-receta [receta]="receta"></app-item-receta>
         </div>
         }

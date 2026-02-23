@@ -7,10 +7,18 @@ import { TipoSelectPipe } from '../../pipes/tipo-select-pipe';
 import { ItemReceta } from "../item-receta/item-receta";
 import { RouterLink } from '@angular/router';
 import { Recetas } from '../../services/recetas';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-recetas-show',
-  imports: [FormsModule, RecetaFilterPipe, IngredienteFilterPipe, TipoSelectPipe, ItemReceta, RouterLink],
+  imports: [FormsModule,
+    RecetaFilterPipe,
+    IngredienteFilterPipe,
+    TipoSelectPipe,
+    ItemReceta,
+    RouterLink,
+    MatButtonModule],
   templateUrl: './recetas-show.html',
   styleUrl: './recetas-show.css',
 })

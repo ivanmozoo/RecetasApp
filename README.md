@@ -4,8 +4,8 @@
 
 **RECETAS** es una aplicación web que almacena recetas predefinidas y permite crear nuevas recetas personalizadas.
 
-Los usuarios pueden ver distintas recetas desde la página principal o añadir las suyas propias mediante un formulario de creación.  
-Una vez creada, la receta se muestra en el listado principal junto a las demás.
+Los usuarios pueden ver distintas recetas desde el Listado de recetas o añadir las suyas propias mediante un formulario de creación.  
+Una vez creada, la receta se muestra en el listado junto a las demás.
 
 La aplicación está creada en Angular y usa como tecnologías:
 
@@ -18,14 +18,18 @@ La aplicación está creada en Angular y usa como tecnologías:
 
 ## ⚙️ Funcionalidades
 
+### 🚢 Navegación en Landing Page
+- Navegación al **listado**, o a la **creación** de recetas integrada en la página inicial del proyecto
+
 ### 🖼 Visualización de recetas
 - Listado de recetas en **cards**.  
-- Cada receta muestra su **imagen** y **nombre**.  
+- Cada receta muestra su **imagen**, su **nombre** y su **tipo**.  
 - Al clicarlas se ofrece una **vista detallada** con toda la información.
 
 ### 🔍 Sistema de filtrado
 - Filtrado de recetas por **nombre**.  
 - Filtrado de recetas por **ingrediente**.
+- Filtrado de recetas por **tipo**.
 
 ### 📝 Creación de recetas
 - El usuario puede crear nuevas recetas rellenando un **formulario con los datos requeridos**.
@@ -35,11 +39,14 @@ La aplicación está creada en Angular y usa como tecnologías:
 ## 🖥 Pantallas de la aplicación
 
 ### 🏠 Página Principal
-Muestra todas las recetas disponibles y permite aplicar filtros por nombre o ingrediente.  
+Landing page que introduce la aplicación y permite navegar al Listado y a las creación de recetas.
+
+### 📋 Listado de recetas
+Muestra todas las recetas disponibles y permite aplicar filtros por nombre, ingrediente o tipo.  
 Incluye un botón para acceder a la creación de una nueva receta.
 
 ### 📄 Vista de Receta
-Muestra toda la información detallada de una receta seleccionada: 
+Muestra toda la información detallada de una receta previamente clicada en el listado: 
 - Nombre 
 - Imagen  
 - Descripción  
