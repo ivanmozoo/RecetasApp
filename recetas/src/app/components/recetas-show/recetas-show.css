@@ -1,8 +1,8 @@
-
-
 .busqueda {
   border-radius: 15px;
   overflow: hidden;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 .form-control {

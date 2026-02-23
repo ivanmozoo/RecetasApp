@@ -3,7 +3,6 @@
   border-radius: 15px;
   overflow: hidden;
   animation: fadeInUp 0.4s ease;
-  
 }
 
 @keyframes fadeInUp {

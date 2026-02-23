@@ -6,5 +6,11 @@ import { RecetaDetalle } from './components/receta-detalle/receta-detalle';
 export const routes: Routes = [
     { path: '', component: Landing },
     { path: 'recetas', component: RecetasShow },
-    { path: 'receta-detalle', component: RecetaDetalle }
+    { path: 'receta-detalle', component: RecetaDetalle },
+    {
+        path: 'receta-detalle/:id',
+        loadComponent: () =>
+            import('./components/receta-detalle/receta-detalle')
+                .then(m => m.RecetaDetalle)
+    }
 ];
