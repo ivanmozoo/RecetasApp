@@ -6,9 +6,9 @@
             </a>
         </div>
         <div class="recipe-hero mb-5 shadow-lg position-relative overflow-hidden rounded-4">
-            <img [src]="receta.imagen" class="w-100 h-100 object-fit-cover" [alt]="receta.nombre">
+            <img [src]="receta.imagen" class="w-100 h-100" [alt]="receta.nombre">
             <div class="hero-overlay d-flex flex-column justify-content-end p-4 p-md-5">
-                <span class="badge bg-primary mb-3 align-self-end text-uppercase px-3 py-2 fw-bold">
+                <span class="badge bg-dark fw-bold mb-2 align-self-start text-capitalize">
                     {{receta.tipo}}
                 </span>
                 <h1 class="display-3 fw-bold text-white mb-0">
@@ -49,8 +49,10 @@
                     </h2>
                 </div>
                 <div class="preparation-steps">
-                    <div *ngFor="let paso of receta.pasos; let i = index" class="step-card d-flex gap-4 p-4 mb-4 bg-white shadow-sm border rounded-4 transition">
-                        <div class="step-number d-flex align-items-center justify-content-center bg-primary text-white rounded-circle fw-bold">
+                    <div *ngFor="let paso of receta.pasos; let i = index"
+                        class="step-card d-flex gap-4 p-4 mb-4 bg-white shadow-sm border rounded-4 transition">
+                        <div
+                            class="step-number d-flex align-items-center justify-content-center bg-primary text-white rounded-circle fw-bold">
                             {{i + 1}}</div>
                         <div class="step-content">
                             <p class="mb-0 text-secondary lh-lg">{{paso}}</p>

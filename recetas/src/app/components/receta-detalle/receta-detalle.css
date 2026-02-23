@@ -17,6 +17,12 @@
   }
 }
 
+.badge {
+  letter-spacing: 1px;
+  padding: 6px 10px;
+  border-radius: 20px;
+}
+
 .btn-volver {
     color: rgb(108, 117, 125);
     font-weight: 600;
@@ -30,7 +36,7 @@
 }
 
 .recipe-hero {
-    height: 500px;
+    height: 600px;
 }
 
 .hero-overlay {

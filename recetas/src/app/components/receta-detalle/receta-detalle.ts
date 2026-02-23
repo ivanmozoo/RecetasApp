@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Receta } from '../../interfaces/receta';
-import { RouterLink } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
+import { Recetas } from '../../services/recetas';
 
 @Component({
   selector: 'app-receta-detalle',
@@ -10,4 +11,14 @@ import { RouterLink } from '@angular/router';
 })
 export class RecetaDetalle {
   receta!: Receta;
+
+  constructor(
+  private route: ActivatedRoute,
+  private recetasService: Recetas
+) {}
+
+ngOnInit() {
+  const id = this.route.snapshot.paramMap.get('id')!;
+  this.receta = this.recetasService.getRecetaById(id)!;
+}
 }
