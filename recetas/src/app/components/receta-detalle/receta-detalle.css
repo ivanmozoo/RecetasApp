@@ -46,15 +46,8 @@
 }
 
 .badge {
-    background: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(10px);
     padding: 8px 12px;
-    font-weight: 500;
-}
-
-.form-check-input:checked {
-    background-color: rgb(13, 110, 253);
-    border-color: rgb(13, 110, 253);
 }
 
 .step-number {
@@ -62,6 +55,7 @@
     height: 45px;
     font-size: 1.2rem;
     box-shadow: 0 4px 10px rgba(13, 110, 253, 0.3);
+    margin-top: -6px;
 }
 
 .step-card {

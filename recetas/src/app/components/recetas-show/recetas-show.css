@@ -18,6 +18,10 @@
   box-shadow: 0 0 0 0.2rem rgba(153, 214, 255, 0.25);
 }
 
+.form-select {
+  cursor: pointer;
+}
+
 .input-group .btn {
   border: none;
   background: transparent;
