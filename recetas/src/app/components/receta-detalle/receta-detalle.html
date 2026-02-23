@@ -1,1 +1,63 @@
-<p>receta-detalle works!</p>
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div class="container py-4">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <a routerLink="/recetas" class="btn-volver text-decoration-none">
+                <i class="bi bi-arrow-left"></i> Volver al listado
+            </a>
+        </div>
+        <div class="recipe-hero mb-5 shadow-lg position-relative overflow-hidden rounded-4">
+            <img [src]="receta.imagen" class="w-100 h-100 object-fit-cover" [alt]="receta.nombre">
+            <div class="hero-overlay d-flex flex-column justify-content-end p-4 p-md-5">
+                <span class="badge bg-primary mb-3 align-self-end text-uppercase px-3 py-2 fw-bold">
+                    {{receta.tipo}}
+                </span>
+                <h1 class="display-3 fw-bold text-white mb-0">
+                    {{receta.nombre}}
+                </h1>
+            </div>
+        </div>
+        <div class="row g-5">
+            <div class="col-lg-4">
+                <section class="mb-5">
+                    <h4 class="fw-bold border-start border-primary border-4 ps-3 mb-4">
+                        Descripción
+                    </h4>
+                    <p class="text-secondary lh-lg">
+                        {{receta.descripcion}}
+                    </p>
+                </section>
+                <div class="card border-0 shadow-sm bg-light p-4 rounded-4 sticky-top" style="top: 20px;">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h4 class="fw-bold mb-0">
+                            Ingredientes
+                        </h4>
+                    </div>
+                    <ul class="list-unstyled mb-4">
+                        <li *ngFor="let ingrediente of receta.ingredientes" class="mb-3 d-flex align-items-center">
+                            <input type="checkbox" class="form-check-input me-3 rounded-circle">
+                            <span class="text-secondary">
+                                {{ingrediente}}
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h2 class="fw-bold mb-0">
+                        Preparación
+                    </h2>
+                </div>
+                <div class="preparation-steps">
+                    <div *ngFor="let paso of receta.pasos; let i = index" class="step-card d-flex gap-4 p-4 mb-4 bg-white shadow-sm border rounded-4 transition">
+                        <div class="step-number d-flex align-items-center justify-content-center bg-primary text-white rounded-circle fw-bold">
+                            {{i + 1}}</div>
+                        <div class="step-content">
+                            <p class="mb-0 text-secondary lh-lg">{{paso}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
