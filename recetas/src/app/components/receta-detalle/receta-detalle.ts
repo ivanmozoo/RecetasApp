@@ -2,10 +2,13 @@ import { Component } from '@angular/core';
 import { Receta } from '../../interfaces/receta';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Recetas } from '../../services/recetas';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-receta-detalle',
-  imports: [RouterLink],
+  imports: [RouterLink, MatIconModule, MatTooltipModule, MatButtonModule],
   templateUrl: './receta-detalle.html',
   styleUrl: './receta-detalle.css',
 })

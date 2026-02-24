@@ -33,6 +33,7 @@ La aplicación está creada en Angular y usa como tecnologías:
 
 ### 📝 Creación de recetas
 - El usuario puede crear nuevas recetas rellenando un **formulario con los datos requeridos**.
+- Accede a dicho formulario clicando el boton de **Crear receta** que hay en el listado.
 
 ---
 
@@ -46,7 +47,7 @@ Muestra todas las recetas disponibles y permite aplicar filtros por nombre, ingr
 Incluye un botón para acceder a la creación de una nueva receta.
 
 ### 📄 Vista de Receta
-Muestra toda la información detallada de una receta previamente clicada en el listado: 
+Muestra toda la información detallada de una receta previamente clicada en el listado, y además permite editarla o eliminarla: 
 - Nombre 
 - Imagen  
 - Descripción  

@@ -8,7 +8,7 @@ import { ItemReceta } from "../item-receta/item-receta";
 import { RouterLink } from '@angular/router';
 import { Recetas } from '../../services/recetas';
 import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-recetas-show',
@@ -18,7 +18,8 @@ import { MatIconModule } from '@angular/material/icon';
     TipoSelectPipe,
     ItemReceta,
     RouterLink,
-    MatButtonModule],
+    MatButtonModule,
+    MatTooltipModule],
   templateUrl: './recetas-show.html',
   styleUrl: './recetas-show.css',
 })

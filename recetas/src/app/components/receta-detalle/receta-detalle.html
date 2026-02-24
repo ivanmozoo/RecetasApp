@@ -4,6 +4,14 @@
             <a routerLink="/recetas" class="btn-volver text-decoration-none">
                 <i class="bi bi-arrow-left"></i> Volver al listado
             </a>
+            <div class="fab-container">
+                <button mat-fab color="primary" matTooltip="Editar receta" aria-label="Editar receta" class="me-4">
+                    <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-fab matTooltip="Eliminar receta" aria-label="Eliminar receta">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </div>
         </div>
         <div class="recipe-hero mb-5 shadow-lg position-relative overflow-hidden rounded-4">
             <img [src]="receta.imagen" class="w-100 h-100" [alt]="receta.nombre">
@@ -38,8 +46,10 @@
                 </div>
                 <div>
                     @for (paso of receta.pasos; track $index; let i = $index) {
-                    <div class="step-card d-flex align-items-start gap-4 p-4 mb-4 bg-white shadow-sm border rounded-4 transition">
-                        <div class="step-number flex-shrink-0 d-flex align-items-center justify-content-center bg-primary text-white rounded-circle fw-bold">
+                    <div
+                        class="step-card d-flex align-items-start gap-4 p-4 mb-4 bg-white shadow-sm border rounded-4 transition">
+                        <div
+                            class="step-number flex-shrink-0 d-flex align-items-center justify-content-center bg-primary text-white rounded-circle fw-bold">
                             {{i + 1}}</div>
                         <div class="flex-grow-1">
                             <p class="mb-0 text-secondary lh-lg">{{paso}}</p>
