@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { FormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, Validators, FormsModule, ReactiveFormsModule, FormControl } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatStepperModule } from '@angular/material/stepper';
@@ -39,5 +39,32 @@ export class CrearReceta {
   tipoFormGroup = this._formBuilder.group({
     tipoCtrl: ['', Validators.required],
   });
+
+  ingredientesFormGroup = this._formBuilder.group({
+    cantidadCtrl: [1, [Validators.required, Validators.min(1)]]
+  });
+
+  ingredientes: FormControl[] = [];
+
+  generarIngredientes() {
+    const cantidad = this.ingredientesFormGroup.get('cantidadCtrl')?.value || 1;
+    this.ingredientes = [];
+    for (let i = 0; i < cantidad; i++) {
+      this.ingredientes.push(new FormControl('', Validators.required));
+    }
+  }
+
+  resetFormulario(stepper: any) {
+    stepper.reset();
+    this.nombreFormGroup.reset();
+    this.descripcionFormGroup.reset();
+    this.imagenFormGroup.reset();
+    this.tipoFormGroup.reset();
+    this.ingredientesFormGroup.reset();
+    this.ingredientesFormGroup.get('cantidadCtrl')?.setValue(1);
+    this.ingredientes = [];
+  }
+
+
 
 }
