@@ -29,6 +29,13 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
+.mat-stepper-vertical {
+  border-radius: 40px;
+  overflow: hidden;
+  border: 1px solid rgb(204, 204, 204);
+}
+
 .animation {
     animation: fadeInUp 0.4s ease;
 }

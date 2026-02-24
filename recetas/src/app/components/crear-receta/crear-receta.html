@@ -45,7 +45,7 @@
             <mat-step [stepControl]="tipoFormGroup">
                 <form [formGroup]="tipoFormGroup">
                     <ng-template matStepLabel>Tipo</ng-template>
-                    <mat-form-field appearance="outline" class="w-100 mt-3">
+                    <mat-form-field appearance="outline" class="w-50 mt-3">
                         <mat-label>Tipo de receta</mat-label>
                         <mat-select formControlName="tipoCtrl" required>
                             <mat-option value="desayuno">Desayuno</mat-option>
@@ -66,20 +66,46 @@
             <mat-step [stepControl]="ingredientesFormGroup">
                 <form [formGroup]="ingredientesFormGroup">
                     <ng-template matStepLabel>Ingredientes</ng-template>
-                    <div class="d-flex gap-3 align-items-end mt-3">
+                    <div class="d-flex gap-3 align-items-end">
                         <mat-form-field appearance="outline" class="w-50">
                             <mat-label>Cantidad de ingredientes</mat-label>
-                            <input matInput type="number" formControlName="cantidadCtrl" min="1">
+                            <input matInput type="number" formControlName="cantidadIngCtrl" min="1">
                         </mat-form-field>
                         <button mat-raised-button color="primary" class="mb-4" type="button"
                             (click)="generarIngredientes()">Generar
                         </button>
                     </div>
-                    <div class="mt-3">
+                    <div class="mt-2">
                         @for (control of ingredientes; track $index; let i = $index) {
                         <mat-form-field appearance="outline" class="w-100 mb-2">
                             <mat-label>Ingrediente {{i + 1}}</mat-label>
                             <input matInput [formControl]="control" placeholder="Ej. Azúcar" required>
+                        </mat-form-field>
+                        }
+                    </div>
+                    <div>
+                        <button mat-button matStepperPrevious>Atrás</button>
+                        <button mat-button matStepperNext>Siguiente</button>
+                    </div>
+                </form>
+            </mat-step>
+            <mat-step [stepControl]="pasosFormGroup">
+                <form [formGroup]="pasosFormGroup">
+                    <ng-template matStepLabel>Pasos</ng-template>
+                    <div class="d-flex gap-3 align-items-end">
+                        <mat-form-field appearance="outline" class="w-50">
+                            <mat-label>Cantidad de Pasos</mat-label>
+                            <input matInput type="number" formControlName="cantidadPasosCtrl" min="1">
+                        </mat-form-field>
+                        <button mat-raised-button color="primary" class="mb-4" type="button"
+                            (click)="generarPasos()">Generar
+                        </button>
+                    </div>
+                    <div class="mt-2">
+                        @for (control of pasos; track $index; let i = $index) {
+                        <mat-form-field appearance="outline" class="w-100 mb-2">
+                            <mat-label>Paso {{i + 1}}</mat-label>
+                            <input matInput [formControl]="control" placeholder="Ej. Separar las yemas de la clara" required>
                         </mat-form-field>
                         }
                     </div>

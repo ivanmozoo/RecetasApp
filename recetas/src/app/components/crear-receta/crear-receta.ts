@@ -41,16 +41,29 @@ export class CrearReceta {
   });
 
   ingredientesFormGroup = this._formBuilder.group({
-    cantidadCtrl: [1, [Validators.required, Validators.min(1)]]
+    cantidadIngCtrl: [1, [Validators.required, Validators.min(1)]]
+  });
+
+   pasosFormGroup = this._formBuilder.group({
+    cantidadPasosCtrl: [1, [Validators.required, Validators.min(1)]]
   });
 
   ingredientes: FormControl[] = [];
+  pasos: FormControl[] = [];
 
   generarIngredientes() {
-    const cantidad = this.ingredientesFormGroup.get('cantidadCtrl')?.value || 1;
+    const cantidad = this.ingredientesFormGroup.get('cantidadIngCtrl')?.value || 1;
     this.ingredientes = [];
     for (let i = 0; i < cantidad; i++) {
       this.ingredientes.push(new FormControl('', Validators.required));
+    }
+  }
+
+  generarPasos() {
+    const cantidad = this.pasosFormGroup.get('cantidadPasosCtrl')?.value || 1;
+    this.pasos = [];
+    for (let i = 0; i < cantidad; i++) {
+      this.pasos.push(new FormControl('', Validators.required));
     }
   }
 
@@ -61,7 +74,9 @@ export class CrearReceta {
     this.imagenFormGroup.reset();
     this.tipoFormGroup.reset();
     this.ingredientesFormGroup.reset();
-    this.ingredientesFormGroup.get('cantidadCtrl')?.setValue(1);
+    this.ingredientesFormGroup.get('cantidadIngCtrl')?.setValue(1);
+    this.pasosFormGroup.reset();
+    this.pasosFormGroup.get('cantidadPasosCtrl')?.setValue(1);
     this.ingredientes = [];
   }
 
