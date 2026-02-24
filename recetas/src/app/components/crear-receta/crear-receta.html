@@ -7,24 +7,25 @@
             <h2 class="titulo-crear">Creación de receta</h2>
         </div>
         <mat-stepper orientation="vertical" #stepper>
-            <mat-step [stepControl]="firstFormGroup">
-                <form [formGroup]="firstFormGroup">
+            <mat-step [stepControl]="nombreFormGroup">
+                <form [formGroup]="nombreFormGroup">
                     <ng-template matStepLabel>Tíulo</ng-template>
-                    <mat-form-field>
+                    <mat-form-field appearance="outline" class="w-100 mt-3">
                         <mat-label>Nombre</mat-label>
-                        <input matInput placeholder="Ej. Natillas" formControlName="firstCtrl" required>
+                        <input matInput placeholder="Ej. Natillas" formControlName="nombreCtrl" required>
                     </mat-form-field>
                     <div>
                         <button matButton matStepperNext>Siguiente</button>
                     </div>
                 </form>
             </mat-step>
-            <mat-step [stepControl]="secondFormGroup">
-                <form [formGroup]="secondFormGroup">
+            <mat-step [stepControl]="descripcionFormGroup">
+                <form [formGroup]="descripcionFormGroup">
                     <ng-template matStepLabel>Descripción</ng-template>
-                    <mat-form-field>
+                    <mat-form-field appearance="outline" class="w-100 mt-3">
                         <mat-label>Descripción</mat-label>
-                        <input matInput formControlName="secondCtrl" placeholder="Ej. Deliciosa pasta con salsa pesto" required>
+                        <input matInput formControlName="descripcionCtrl"
+                            placeholder="Ej. Deliciosa pasta con salsa pesto" required>
                     </mat-form-field>
                     <div>
                         <button matButton matStepperPrevious>Atrás</button>
@@ -32,12 +33,33 @@
                     </div>
                 </form>
             </mat-step>
-            <mat-step [stepControl]="secondFormGroup">
-                <form [formGroup]="secondFormGroup">
+            <mat-step [stepControl]="imagenFormGroup">
+                <form [formGroup]="imagenFormGroup">
                     <ng-template matStepLabel>Imagen</ng-template>
                     <div>
                         <button matButton matStepperPrevious>Atrás</button>
                         <button matButton matStepperNext>Siguiente</button>
+                    </div>
+                </form>
+            </mat-step>
+            <mat-step [stepControl]="tipoFormGroup">
+                <form [formGroup]="tipoFormGroup">
+                    <ng-template matStepLabel>Tipo</ng-template>
+                    <mat-form-field appearance="outline" class="w-100 mt-3">
+                        <mat-label>Tipo de receta</mat-label>
+                        <mat-select formControlName="tipoCtrl" required>
+                            <mat-option value="desayuno">Desayuno</mat-option>
+                            <mat-option value="cena">Cena</mat-option>
+                            <mat-option value="merienda">Merienda</mat-option>
+                            <mat-option value="almuerzo">Almuerzo</mat-option>
+                            <mat-option value="comida">Comida</mat-option>
+                            <mat-option value="postre">Postre</mat-option>
+                            <mat-option value="bebida">Bebida</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <div>
+                        <button mat-button matStepperPrevious>Atrás</button>
+                        <button mat-button matStepperNext>Siguiente</button>
                     </div>
                 </form>
             </mat-step>
