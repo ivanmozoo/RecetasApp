@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectorRef, Component, inject } from '@angular/core';
 import { FormBuilder, Validators, FormsModule, ReactiveFormsModule, FormControl } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -44,12 +44,13 @@ export class CrearReceta {
     cantidadIngCtrl: [1, [Validators.required, Validators.min(1)]]
   });
 
-   pasosFormGroup = this._formBuilder.group({
+  pasosFormGroup = this._formBuilder.group({
     cantidadPasosCtrl: [1, [Validators.required, Validators.min(1)]]
   });
 
   ingredientes: FormControl[] = [];
   pasos: FormControl[] = [];
+  foto: { image?: string } = {};
 
   generarIngredientes() {
     const cantidad = this.ingredientesFormGroup.get('cantidadIngCtrl')?.value || 1;
@@ -67,7 +68,32 @@ export class CrearReceta {
     }
   }
 
-  resetFormulario(stepper: any) {
+  private _cdr = inject(ChangeDetectorRef);
+
+  changeImage(inputFile: HTMLInputElement) {
+    const file = inputFile.files?.[0];
+    if (file) {
+      if (!file.type.startsWith('image/')) {
+        alert('Solo se permiten imágenes');
+        inputFile.value = '';
+        this.foto.image = undefined;
+        this.imagenFormGroup.get('imagenCtrl')?.setValue(null);
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.foto.image = reader.result as string;
+        this._cdr.detectChanges();
+      };
+      reader.readAsDataURL(file);
+    } else {
+      this.foto.image = undefined;
+      this.imagenFormGroup.get('imagenCtrl')?.setValue(null);
+    }
+  }
+
+  resetFormulario(stepper: any, fileInput?: HTMLInputElement) {
     stepper.reset();
     this.nombreFormGroup.reset();
     this.descripcionFormGroup.reset();
@@ -78,6 +104,11 @@ export class CrearReceta {
     this.pasosFormGroup.reset();
     this.pasosFormGroup.get('cantidadPasosCtrl')?.setValue(1);
     this.ingredientes = [];
+    this.pasos = [];
+    this.foto = {};
+    if (fileInput) {
+      fileInput.value = '';
+    }
   }
 
 
