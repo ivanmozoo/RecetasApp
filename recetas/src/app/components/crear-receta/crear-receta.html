@@ -37,16 +37,15 @@
                 <form [formGroup]="imagenFormGroup">
                     <ng-template matStepLabel>Imagen</ng-template>
                     <div class="mb-3 mt-2">
-                        <mat-label>Selecciona una imagen:</mat-label>
-                        <input id="image" type="file" class="form-control mt-2" #fileInput
+                        <input id="image" type="file" class="form-control mt-3" #fileInput
                             (change)="changeImage(fileInput)" accept="image/*" required>
                     </div>
                     @if (foto.image) {
-                    <div class="mt-4">
-                        <img [src]="foto.image" alt="Vista previa" class="img-thumbnail w-50">
+                    <div class="image-preview-container mt-4">
+                        <img [src]="foto.image" alt="Vista previa" class="image-preview">
                     </div>
                     }
-                    <div class="mt-3">
+                    <div class="mt-4">
                         <button matButton matStepperPrevious>Atrás</button>
                         <button matButton matStepperNext>Siguiente</button>
                     </div>

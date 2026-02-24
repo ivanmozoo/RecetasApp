@@ -1,5 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { Receta } from '../interfaces/receta';
+import { Ingrediente } from '../interfaces/ingrediente';
 
 @Pipe({
   name: 'ingredienteFilter',
@@ -9,8 +10,8 @@ export class IngredienteFilterPipe implements PipeTransform {
   transform(recetas: Receta[], filterBy: string): Receta[] {
     if (filterBy) {
       return recetas.filter((receta: Receta) => {
-        return receta.ingredientes.some((ingrediente: string) =>
-          this.includesText(ingrediente, filterBy)
+        return receta.ingredientes.some((ingrediente: Ingrediente) =>
+          this.includesText(ingrediente.nombre, filterBy)
         )
       })
     }

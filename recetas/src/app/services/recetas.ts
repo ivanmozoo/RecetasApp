@@ -11,7 +11,12 @@ export class Recetas {
     nombre: 'Espaguetis a la carbonara',
     imagen: 'assets/espaguetis.jpg',
     descripcion: 'Espaguetis con una pasta cremosa con huevo, queso y panceta',
-    ingredientes: ['Espaguetis', 'Panceta/Bacon', 'Yemas de huevo', 'Queso parmesano'],
+    ingredientes: [
+      { nombre: 'Espaguetis', cantidad: '400', medida: 'g' },
+      { nombre: 'Panceta', cantidad: '150', medida: 'g' },
+      { nombre: 'Yemas de huevo', cantidad: '4' },
+      { nombre: 'Queso parmesano', cantidad: '80', medida: 'g' }
+    ],
     pasos: [
       'Cocer los espaguetis en agua con sal según las instrucciones del paquete.',
       'Freír la panceta en una sartén hasta que esté crujiente.',
@@ -27,7 +32,13 @@ export class Recetas {
     nombre: 'Tarta de manzana',
     imagen: 'assets/tarta-manzana.jpeg',
     descripcion: 'Tarta de manzana casera con canela y azúcar.',
-    ingredientes: ['Masa quebrada', 'Manzanas', 'Azúcar', 'Canela', 'Mantequilla'],
+    ingredientes: [
+      { nombre: 'Masa quebrada', cantidad: '1', medida: 'unidad' },
+      { nombre: 'Manzanas', cantidad: '4' },
+      { nombre: 'Azúcar', cantidad: '100', medida: 'g' },
+      { nombre: 'Canela', cantidad: '1', medida: 'cucharadita' },
+      { nombre: 'Mantequilla', cantidad: '30', medida: 'g' }
+    ],
     pasos: [
       'Precalentar el horno a 180°C.',
       'Extender la masa en un molde para tartas.',
@@ -44,7 +55,13 @@ export class Recetas {
     nombre: 'Smoothie de frutas',
     imagen: 'assets/smoothie-frutas.jpeg',
     descripcion: 'Bebida refrescante y saludable a base de frutas naturales.',
-    ingredientes: ['Plátano', 'Fresas', 'Mango', 'Leche o yogur', 'Miel'],
+    ingredientes: [
+      { nombre: 'Plátano', cantidad: '1' },
+      { nombre: 'Fresas', cantidad: '6' },
+      { nombre: 'Mango', cantidad: '1' },
+      { nombre: 'Leche o yogur', cantidad: '250', medida: 'ml' },
+      { nombre: 'Miel', cantidad: '1', medida: 'cucharada' }
+    ],
     pasos: [
       'Lavar y pelar las frutas según corresponda.',
       'Cortar las frutas en trozos pequeños.',
@@ -60,7 +77,13 @@ export class Recetas {
     nombre: 'Ensalada César',
     imagen: 'assets/ensalada-cesar.jpeg',
     descripcion: 'Ensalada clásica con lechuga, pollo y aderezo César.',
-    ingredientes: ['Lechuga romana', 'Pechuga de pollo', 'Crutones', 'Queso parmesano', 'Aderezo César'],
+    ingredientes: [
+      { nombre: 'Lechuga romana', cantidad: '1', medida: 'unidad' },
+      { nombre: 'Pechuga de pollo', cantidad: '1', medida: 'unidad' },
+      { nombre: 'Crutones', cantidad: '50', medida: 'g' },
+      { nombre: 'Queso parmesano', cantidad: '40', medida: 'g' },
+      { nombre: 'Aderezo César', cantidad: '4', medida: 'cucharadas' }
+    ],
     pasos: [
       'Cocer la pechuga de pollo a la plancha y cortarla en tiras.',
       'Lavar y trocear la lechuga.',
@@ -75,7 +98,14 @@ export class Recetas {
     nombre: 'Guacamole clásico',
     imagen: 'assets/Guacamole.jpg',
     descripcion: 'Dip mexicano de aguacate con limón y cilantro.',
-    ingredientes: ['Aguacates', 'Cebolla', 'Tomate', 'Cilantro', 'Limón', 'Sal'],
+    ingredientes: [
+      { nombre: 'Aguacates', cantidad: '3' },
+      { nombre: 'Cebolla', cantidad: '1/2' },
+      { nombre: 'Tomate', cantidad: '1' },
+      { nombre: 'Cilantro', cantidad: '1', medida: 'manojo' },
+      { nombre: 'Limón', cantidad: '1' },
+      { nombre: 'Sal', cantidad: '1', medida: 'cucharadita' }
+    ],
     pasos: [
       'Pelar y triturar los aguacates en un bol.',
       'Picar finamente la cebolla, el tomate y el cilantro.',
@@ -90,7 +120,14 @@ export class Recetas {
     nombre: 'Brownies de chocolate',
     imagen: 'assets/Brownies.png',
     descripcion: 'Brownies húmedos y chocolatosos con nueces.',
-    ingredientes: ['Chocolate negro', 'Mantequilla', 'Azúcar', 'Huevos', 'Harina', 'Nueces'],
+    ingredientes: [
+      { nombre: 'Chocolate negro', cantidad: '200', medida: 'g' },
+      { nombre: 'Mantequilla', cantidad: '120', medida: 'g' },
+      { nombre: 'Azúcar', cantidad: '150', medida: 'g' },
+      { nombre: 'Huevos', cantidad: '3' },
+      { nombre: 'Harina', cantidad: '80', medida: 'g' },
+      { nombre: 'Nueces', cantidad: '50', medida: 'g' }
+    ],
     pasos: [
       'Precalentar el horno a 180°C.',
       'Derretir el chocolate con la mantequilla al baño maría.',
@@ -106,7 +143,13 @@ export class Recetas {
     nombre: 'Limonada casera',
     imagen: 'assets/Limonada.jpg',
     descripcion: 'Bebida refrescante de limón natural con azúcar.',
-    ingredientes: ['Limones', 'Agua', 'Azúcar', 'Hielo', 'Hojas de menta'],
+    ingredientes: [
+      { nombre: 'Limones', cantidad: '4' },
+      { nombre: 'Agua', cantidad: '1', medida: 'litro' },
+      { nombre: 'Azúcar', cantidad: '80', medida: 'g' },
+      { nombre: 'Hielo', cantidad: 'Al gusto' },
+      { nombre: 'Hojas de menta', cantidad: '5' }
+    ],
     pasos: [
       'Exprimir los limones y colar el jugo.',
       'Disolver el azúcar en un poco de agua tibia.',
@@ -121,7 +164,14 @@ export class Recetas {
     nombre: 'Pasta al pesto',
     imagen: 'assets/Pasta-pesto.jpg',
     descripcion: 'Pasta con salsa pesto de albahaca y piñones.',
-    ingredientes: ['Pasta', 'Albahaca fresca', 'Piñones', 'Queso parmesano', 'Ajo', 'Aceite de oliva'],
+    ingredientes: [
+      { nombre: 'Pasta', cantidad: '400', medida: 'g' },
+      { nombre: 'Albahaca fresca', cantidad: '1', medida: 'manojo' },
+      { nombre: 'Piñones', cantidad: '30', medida: 'g' },
+      { nombre: 'Queso parmesano', cantidad: '60', medida: 'g' },
+      { nombre: 'Ajo', cantidad: '1', medida: 'diente' },
+      { nombre: 'Aceite de oliva', cantidad: '80', medida: 'ml' }
+    ],
     pasos: [
       'Cocer la pasta según las instrucciones del paquete.',
       'Preparar el pesto triturando albahaca, piñones, ajo y queso con aceite de oliva.',
@@ -135,7 +185,14 @@ export class Recetas {
     nombre: 'Té helado de frutas',
     imagen: 'assets/Te-helado-frutas.jpg',
     descripcion: 'Té frío infusionado con frutas naturales.',
-    ingredientes: ['Bolsitas de té negro', 'Agua', 'Fresas', 'Rodajas de naranja', 'Miel', 'Hielo'],
+    ingredientes: [
+      { nombre: 'Bolsitas de té negro', cantidad: '2' },
+      { nombre: 'Agua', cantidad: '1', medida: 'litro' },
+      { nombre: 'Fresas', cantidad: '6' },
+      { nombre: 'Naranja', cantidad: '1' },
+      { nombre: 'Miel', cantidad: '2', medida: 'cucharadas' },
+      { nombre: 'Hielo', cantidad: 'Al gusto' }
+    ],
     pasos: [
       'Preparar el té negro y dejar enfriar.',
       'Añadir las frutas cortadas en rodajas o trozos.',
@@ -149,7 +206,13 @@ export class Recetas {
     nombre: 'Pizza margarita',
     imagen: 'assets/Pizza-margarita.jpg',
     descripcion: 'Pizza clásica con tomate, mozzarella y albahaca.',
-    ingredientes: ['Masa de pizza', 'Tomate triturado', 'Mozzarella', 'Albahaca fresca', 'Aceite de oliva'],
+    ingredientes: [
+      { nombre: 'Masa de pizza', cantidad: '1' },
+      { nombre: 'Tomate triturado', cantidad: '150', medida: 'g' },
+      { nombre: 'Mozzarella', cantidad: '200', medida: 'g' },
+      { nombre: 'Albahaca fresca', cantidad: '6', medida: 'hojas' },
+      { nombre: 'Aceite de oliva', cantidad: '1', medida: 'cucharada' }
+    ],
     pasos: [
       'Precalentar el horno a 220°C.',
       'Extender la masa en una bandeja para horno.',
@@ -164,7 +227,14 @@ export class Recetas {
     nombre: 'Crema catalana',
     imagen: 'assets/Crema-catalana.jpg',
     descripcion: 'Postre típico con textura cremosa y caramelo crujiente.',
-    ingredientes: ['Leche', 'Yemas de huevo', 'Azúcar', 'Maicena', 'Canela', 'Cáscara de limón'],
+    ingredientes: [
+      { nombre: 'Leche', cantidad: '500', medida: 'ml' },
+      { nombre: 'Yemas de huevo', cantidad: '4' },
+      { nombre: 'Azúcar', cantidad: '100', medida: 'g' },
+      { nombre: 'Maicena', cantidad: '20', medida: 'g' },
+      { nombre: 'Canela', cantidad: '1', medida: 'rama' },
+      { nombre: 'Cáscara de limón', cantidad: '1' }
+    ],
     pasos: [
       'Calentar la leche con canela y cáscara de limón.',
       'Batir las yemas con azúcar y maicena.',
@@ -179,7 +249,16 @@ export class Recetas {
     nombre: 'Sopa de verduras',
     imagen: 'assets/sopa-de-verduras.jpg',
     descripcion: 'Sopa ligera con verduras de temporada.',
-    ingredientes: ['Zanahoria', 'Calabacín', 'Patata', 'Cebolla', 'Apio', 'Caldo de verduras', 'Sal', 'Pimienta'],
+    ingredientes: [
+      { nombre: 'Zanahorias', cantidad: '2' },
+      { nombre: 'Calabacín', cantidad: '1' },
+      { nombre: 'Patata', cantidad: '1' },
+      { nombre: 'Cebolla', cantidad: '1' },
+      { nombre: 'Apio', cantidad: '1', medida: 'rama' },
+      { nombre: 'Caldo de verduras', cantidad: '1', medida: 'litro' },
+      { nombre: 'Sal', cantidad: 'Al gusto' },
+      { nombre: 'Pimienta', cantidad: 'Al gusto' }
+    ],
     pasos: [
       'Picar todas las verduras en trozos uniformes.',
       'Saltear la cebolla y el apio en una olla con un poco de aceite.',
@@ -194,7 +273,13 @@ export class Recetas {
     nombre: 'Batido de chocolate',
     imagen: 'assets/batido-de-chocolate.jpg',
     descripcion: 'Bebida cremosa de chocolate con leche.',
-    ingredientes: ['Leche', 'Cacao en polvo', 'Azúcar', 'Hielo', 'Crema batida'],
+    ingredientes: [
+      { nombre: 'Leche', cantidad: '300', medida: 'ml' },
+      { nombre: 'Cacao en polvo', cantidad: '2', medida: 'cucharadas' },
+      { nombre: 'Azúcar', cantidad: '1', medida: 'cucharada' },
+      { nombre: 'Hielo', cantidad: '4', medida: 'cubitos' },
+      { nombre: 'Crema batida', cantidad: 'Al gusto' }
+    ],
     pasos: [
       'Mezclar la leche con el cacao y el azúcar hasta disolver.',
       'Añadir hielo y licuar hasta obtener una mezcla homogénea.',
@@ -207,7 +292,14 @@ export class Recetas {
     nombre: 'Cheesecake clásico',
     imagen: 'assets/Cheesecake.jpg',
     descripcion: 'Postre cremoso con base de galleta y cobertura ligera.',
-    ingredientes: ['Galletas', 'Mantequilla', 'Queso crema', 'Azúcar', 'Huevos', 'Esencia de vainilla'],
+    ingredientes: [
+      { nombre: 'Galletas', cantidad: '200', medida: 'g' },
+      { nombre: 'Mantequilla', cantidad: '100', medida: 'g' },
+      { nombre: 'Queso crema', cantidad: '500', medida: 'g' },
+      { nombre: 'Azúcar', cantidad: '120', medida: 'g' },
+      { nombre: 'Huevos', cantidad: '3' },
+      { nombre: 'Esencia de vainilla', cantidad: '1', medida: 'cucharadita' }
+    ],
     pasos: [
       'Triturar las galletas y mezclarlas con mantequilla derretida.',
       'Presionar la mezcla en el fondo de un molde y refrigerar.',
