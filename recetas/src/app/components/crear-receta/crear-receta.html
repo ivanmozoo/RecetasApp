@@ -1,1 +1,45 @@
-<p>crear-receta works!</p>
+<main class="min-vh-100 d-flex flex-column">
+    <div class="container py-5 mb-5 animation">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <a routerLink="/recetas" class="btn-volver text-decoration-none">
+                <i class="bi bi-arrow-left"></i> Volver al listado
+            </a>
+            <h2 class="titulo-crear">Creación de receta</h2>
+        </div>
+        <mat-stepper orientation="vertical" #stepper>
+            <mat-step [stepControl]="firstFormGroup">
+                <form [formGroup]="firstFormGroup">
+                    <ng-template matStepLabel>Fill out your name</ng-template>
+                    <mat-form-field>
+                        <mat-label>Name</mat-label>
+                        <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
+                    </mat-form-field>
+                    <div>
+                        <button matButton matStepperNext>Next</button>
+                    </div>
+                </form>
+            </mat-step>
+            <mat-step [stepControl]="secondFormGroup">
+                <form [formGroup]="secondFormGroup">
+                    <ng-template matStepLabel>Fill out your address</ng-template>
+                    <mat-form-field>
+                        <mat-label>Address</mat-label>
+                        <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY" required>
+                    </mat-form-field>
+                    <div>
+                        <button matButton matStepperPrevious>Back</button>
+                        <button matButton matStepperNext>Next</button>
+                    </div>
+                </form>
+            </mat-step>
+            <mat-step>
+                <ng-template matStepLabel>Done</ng-template>
+                <p>You are now done.</p>
+                <div>
+                    <button matButton matStepperPrevious>Back</button>
+                    <button matButton (click)="stepper.reset()">Reset</button>
+                </div>
+            </mat-step>
+        </mat-stepper>
+    </div>
+</main>

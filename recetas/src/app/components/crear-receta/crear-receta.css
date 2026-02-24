@@ -1,0 +1,46 @@
+.mat-stepper-vertical {
+  margin-top: 8px;
+}
+
+.mat-mdc-form-field {
+  margin-top: 16px;
+}
+
+.btn-volver {
+    color: rgb(108, 117, 125);
+    font-weight: 600;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.btn-volver:hover {
+    color: rgb(13, 110, 253);
+    transform: translateX(-5px);
+}
+
+.titulo-crear {
+  font-size: 26px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin: 0;
+  line-height: 1;
+  background-clip: text;
+  background: linear-gradient(135deg, #0d6efd, #4dabf7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.animation {
+    animation: fadeInUp 0.4s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
