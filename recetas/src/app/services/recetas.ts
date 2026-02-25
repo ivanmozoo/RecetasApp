@@ -315,7 +315,7 @@ export class Recetas {
     return this.recetas;
   }
 
-  getRecetaById(id: string) {
+  getRecetaById(id: number) {
     return this.recetas.find(receta => receta.id === id);
   }
 }

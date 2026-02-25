@@ -26,8 +26,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 export class RecetasShow {
   recetas: Receta[] = [];
 
-  filterSearch = ''
-  filterIngrediente = ''
+  filterSearch = '';
+  filterIngrediente = '';
   selectTipo = '';
 
   constructor(private recetasService: Recetas) {}

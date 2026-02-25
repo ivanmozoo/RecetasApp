@@ -21,7 +21,13 @@ export class RecetaDetalle {
   ) { }
 
   ngOnInit() {
-    const id = this.route.snapshot.paramMap.get('id')!;
-    this.receta = this.recetasService.getRecetaById(id)!;
+    const id = Number(this.route.snapshot.paramMap.get('id'));
+    const receta = this.recetasService.getRecetaById(id);
+
+    if (receta) {
+      this.receta = receta;
+    } else {
+      alert('Receta no encontrada');
+    }
   }
 }
