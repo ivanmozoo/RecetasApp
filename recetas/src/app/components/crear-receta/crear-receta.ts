@@ -95,24 +95,31 @@ export class CrearReceta {
 
   changeImage(inputFile: HTMLInputElement) {
     const file = inputFile.files?.[0];
-    if (file) {
-      if (!file.type.startsWith('image/')) {
-        alert('Solo se permiten imágenes');
-        inputFile.value = '';
-        this.foto.image = undefined;
-        this.imagenFormGroup.get('imagenCtrl')?.setValue(null);
-        return;
-      }
-
-      this.imagenFormGroup.get('imagenCtrl')?.setValue(file);
-
+    if (file && file.type.startsWith('image/')) {
       const reader = new FileReader();
       reader.onload = () => {
         this.foto.image = reader.result as string;
         this._cdr.detectChanges();
       };
       reader.readAsDataURL(file);
+
+      this.imagenFormGroup.get('imagenCtrl')?.setValue(file);
+    } else {
+      alert('Solo se permiten imágenes');
+      inputFile.value = '';
+      this.foto.image = undefined;
+      this.imagenFormGroup.get('imagenCtrl')?.setValue(null);
     }
+  }
+
+  get pasosConValor(): boolean {
+    return this.pasosArray.controls.some(p => !!p?.value);
+  }
+
+  get ingredientesConValor(): boolean {
+    return this.ingredientesArray.controls.some(i =>
+      !!i?.get('nombre')?.value || !!i?.get('cantidad')?.value || !!i?.get('medida')?.value
+    );
   }
 
   resetFormulario(stepper: any, fileInput?: HTMLInputElement) {

@@ -38,7 +38,7 @@
                     <ng-template matStepLabel>Imagen</ng-template>
                     <div class="mb-3 mt-2">
                         <input id="image" type="file" class="form-control mt-3" #fileInput
-                            (change)="changeImage(fileInput)" formControlName="imagenCtrl" accept="image/*" required>
+                            (change)="changeImage(fileInput)" accept="image/*" required>
                     </div>
                     @if (foto.image) {
                     <div class="image-preview-container mt-4">
@@ -154,40 +154,55 @@
             <mat-step>
                 <ng-template matStepLabel>Resumen</ng-template>
                 <div class="resumen-container">
+                    @if (nombreFormGroup.get('nombreCtrl')?.value) {
                     <h3 class="resumen-titulo">
                         {{ nombreFormGroup.get('nombreCtrl')?.value }}
                     </h3>
+                    }
                     @if (foto.image) {
                     <div class="resumen-imagen">
                         <img [src]="foto.image" alt="Imagen receta">
                     </div>
                     }
+                    @if (descripcionFormGroup.get('descripcionCtrl')?.value) {
                     <p class="resumen-descripcion">
                         {{ descripcionFormGroup.get('descripcionCtrl')?.value }}
                     </p>
+                    }
+                    @if (tipoFormGroup.get('tipoCtrl')?.value) {
                     <div class="resumen-badge">
                         {{ tipoFormGroup.get('tipoCtrl')?.value | titlecase }}
                     </div>
+                    }
+                    @if (pasosConValor) {
+                    <div class="resumen-seccion">
+                        <h4>Pasos</h4>
+                        <ol>
+                            @for (paso of pasosArray.controls; track paso; let i = $index) {
+                            @if (paso?.value) {
+                            <li>{{ paso.value }}</li>
+                            }
+                            }
+                        </ol>
+                    </div>
+                    }
+                    @if (ingredientesConValor) {
                     <div class="resumen-seccion">
                         <h4>Ingredientes</h4>
                         <ul>
                             @for (ingrediente of ingredientesArray.controls; track ingrediente; let i = $index) {
+                            @if (ingrediente?.get('nombre')?.value || ingrediente?.get('cantidad')?.value ||
+                            ingrediente?.get('medida')?.value) {
                             <li>
                                 {{ ingrediente.get('cantidad')?.value }}
                                 {{ ingrediente.get('medida')?.value }}
                                 {{ ingrediente.get('nombre')?.value }}
                             </li>
                             }
+                            }
                         </ul>
                     </div>
-                    <div class="resumen-seccion">
-                        <h4>Pasos</h4>
-                        <ol>
-                            @for (paso of pasosArray.controls; track paso; let i = $index) {
-                            <li>{{ paso.value }}</li>
-                            }
-                        </ol>
-                    </div>
+                    }
                     <div class="resumen-botones">
                         <button mat-button matStepperPrevious>Atrás</button>
                         <button mat-stroked-button color="warn" (click)="resetFormulario(stepper, fileInput)">
