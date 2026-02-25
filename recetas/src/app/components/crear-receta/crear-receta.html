@@ -1,4 +1,4 @@
-<main class="min-vh-100 d-flex flex-column">
+<main class="min-vh-90 d-flex flex-column">
     <div class="container py-5 mb-5 animation">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <a routerLink="/recetas" class="btn-volver text-decoration-none">
@@ -75,24 +75,43 @@
             <mat-step [stepControl]="ingredientesFormGroup">
                 <form [formGroup]="ingredientesFormGroup">
                     <ng-template matStepLabel>Ingredientes</ng-template>
-                    <div class="d-flex gap-3 align-items-end">
-                        <mat-form-field appearance="outline" class="w-50">
-                            <mat-label>Cantidad de ingredientes</mat-label>
-                            <input matInput type="number" formControlName="cantidadIngCtrl" min="1">
-                        </mat-form-field>
-                        <button mat-raised-button color="primary" class="mb-4" type="button"
-                            (click)="generarIngredientes()">Generar
-                        </button>
-                    </div>
-                    <div class="mt-2">
-                        @for (control of ingredientes; track $index; let i = $index) {
-                        <mat-form-field appearance="outline" class="w-100 mb-2">
-                            <mat-label>Ingrediente {{i + 1}}</mat-label>
-                            <input matInput [formControl]="control" placeholder="Ej. Azúcar" required>
-                        </mat-form-field>
+                    <div formArrayName="ingredientes">
+                        @for (ingrediente of ingredientesArray.controls; track ingrediente; let i = $index) {
+                        <div [formGroupName]="i" class="mb-3">
+                            <div class="d-flex justify-content-between align-items-center mt-2">
+                                <mat-label class="fw-bold">
+                                    Ingrediente {{ i + 1 }}
+                                </mat-label>
+                                <button mat-icon-button color="warn" type="button" (click)="eliminarIngrediente(i)"
+                                    [disabled]="ingredientesArray.length === 1">
+                                    <mat-icon>delete</mat-icon>
+                                </button>
+                            </div>
+                            <div class="d-flex gap-4">
+                                <mat-form-field appearance="outline" class="w-100">
+                                    <mat-label>Nombre</mat-label>
+                                    <input matInput formControlName="nombre" required>
+                                </mat-form-field>
+                                <mat-form-field appearance="outline" class="w-100">
+                                    <mat-label>Cantidad</mat-label>
+                                    <input matInput type="number" formControlName="cantidad" required>
+                                </mat-form-field>
+                                <mat-form-field appearance="outline" class="w-100">
+                                    <mat-label>Medida</mat-label>
+                                    <input matInput formControlName="medida">
+                                </mat-form-field>
+                            </div>
+                        </div>
                         }
                     </div>
-                    <div>
+                    <div class="mt-2">
+                        <button mat-raised-button color="primary" type="button" (click)="agregarIngrediente()"
+                            class="d-flex align-items-center gap-2">
+                            <mat-icon>add</mat-icon>
+                            <span>Añadir Ingrediente {{ingredientesArray.length + 1}}</span>
+                        </button>
+                    </div>
+                    <div class="mt-4">
                         <button mat-button matStepperPrevious>Atrás</button>
                         <button mat-button matStepperNext>Siguiente</button>
                     </div>

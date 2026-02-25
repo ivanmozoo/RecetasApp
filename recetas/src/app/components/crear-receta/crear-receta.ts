@@ -1,11 +1,12 @@
 import { ChangeDetectorRef, Component, inject } from '@angular/core';
-import { FormBuilder, Validators, FormsModule, ReactiveFormsModule, FormControl } from '@angular/forms';
+import { FormBuilder, Validators, FormsModule, ReactiveFormsModule, FormControl, FormArray, FormGroup } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterLink } from '@angular/router';
 import { MatSelectModule } from '@angular/material/select';
+import { MatIconModule } from '@angular/material/icon';
 @Component({
   selector: 'app-crear-receta',
   imports: [
@@ -16,7 +17,8 @@ import { MatSelectModule } from '@angular/material/select';
     MatFormFieldModule,
     MatInputModule,
     RouterLink,
-    MatSelectModule
+    MatSelectModule,
+    MatIconModule
   ],
   templateUrl: './crear-receta.html',
   styleUrl: './crear-receta.css',
@@ -40,35 +42,46 @@ export class CrearReceta {
     tipoCtrl: ['', Validators.required],
   });
 
-  ingredientesFormGroup = this._formBuilder.group({
-    cantidadIngCtrl: [1, [Validators.required, Validators.min(1)]]
-  });
-
   pasosFormGroup = this._formBuilder.group({
     cantidadPasosCtrl: [1, [Validators.required, Validators.min(1)]]
   });
 
-  ingredientes: FormControl[] = [];
-  pasos: FormControl[] = [];
-  foto: { image?: string } = {};
+  ingredientesFormGroup = this._formBuilder.group({
+    ingredientes: this._formBuilder.array([])
+  });
 
-  generarIngredientes() {
-    const cantidad = this.ingredientesFormGroup.get('cantidadIngCtrl')?.value || 1;
-    this.ingredientes = [];
-    for (let i = 0; i < cantidad; i++) {
-      this.ingredientes.push(new FormControl('', Validators.required));
-    }
+  get ingredientesArray(): FormArray {
+    return this.ingredientesFormGroup.get('ingredientes') as FormArray;
   }
+
+  private crearIngrediente(): FormGroup {
+    return this._formBuilder.group({
+      nombre: ['', Validators.required],
+      cantidad: ['', Validators.required],
+      medida: ['']
+    });
+  }
+
+  agregarIngrediente() {
+    this.ingredientesArray.push(this.crearIngrediente());
+  }
+
+  eliminarIngrediente(index: number) {
+    this.ingredientesArray.removeAt(index);
+  }
+
+  pasos: any[] = [];
 
   generarPasos() {
     const cantidad = this.pasosFormGroup.get('cantidadPasosCtrl')?.value || 1;
     this.pasos = [];
     for (let i = 0; i < cantidad; i++) {
-      this.pasos.push(new FormControl('', Validators.required));
+      this.pasos.push(this._formBuilder.control('', Validators.required));
     }
   }
 
   private _cdr = inject(ChangeDetectorRef);
+  foto: { image?: string } = {};
 
   changeImage(inputFile: HTMLInputElement) {
     const file = inputFile.files?.[0];
@@ -99,16 +112,19 @@ export class CrearReceta {
     this.descripcionFormGroup.reset();
     this.imagenFormGroup.reset();
     this.tipoFormGroup.reset();
-    this.ingredientesFormGroup.reset();
-    this.ingredientesFormGroup.get('cantidadIngCtrl')?.setValue(1);
     this.pasosFormGroup.reset();
     this.pasosFormGroup.get('cantidadPasosCtrl')?.setValue(1);
-    this.ingredientes = [];
+    this.ingredientesArray.clear();
+    this.agregarIngrediente();
     this.pasos = [];
     this.foto = {};
     if (fileInput) {
       fileInput.value = '';
     }
+  }
+
+  constructor() {
+    this.agregarIngrediente();
   }
 
 
