@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Component, inject } from '@angular/core';
-import { FormBuilder, Validators, FormsModule, ReactiveFormsModule, FormControl, FormArray, FormGroup } from '@angular/forms';
+import { FormBuilder, Validators, FormsModule, ReactiveFormsModule, FormArray, FormGroup, FormControl } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatStepperModule } from '@angular/material/stepper';
@@ -43,7 +43,7 @@ export class CrearReceta {
   });
 
   pasosFormGroup = this._formBuilder.group({
-    cantidadPasosCtrl: [1, [Validators.required, Validators.min(1)]]
+    pasos: this._formBuilder.array([])
   });
 
   ingredientesFormGroup = this._formBuilder.group({
@@ -70,14 +70,16 @@ export class CrearReceta {
     this.ingredientesArray.removeAt(index);
   }
 
-  pasos: any[] = [];
+  get pasosArray(): FormArray {
+    return this.pasosFormGroup.get('pasos') as FormArray;
+  }
 
-  generarPasos() {
-    const cantidad = this.pasosFormGroup.get('cantidadPasosCtrl')?.value || 1;
-    this.pasos = [];
-    for (let i = 0; i < cantidad; i++) {
-      this.pasos.push(this._formBuilder.control('', Validators.required));
-    }
+  agregarPaso() {
+    this.pasosArray.push(this._formBuilder.control('', Validators.required));
+  }
+
+  eliminarPaso(index: number) {
+    this.pasosArray.removeAt(index);
   }
 
   private _cdr = inject(ChangeDetectorRef);
@@ -112,11 +114,10 @@ export class CrearReceta {
     this.descripcionFormGroup.reset();
     this.imagenFormGroup.reset();
     this.tipoFormGroup.reset();
-    this.pasosFormGroup.reset();
-    this.pasosFormGroup.get('cantidadPasosCtrl')?.setValue(1);
     this.ingredientesArray.clear();
+    this.pasosArray.clear();
     this.agregarIngrediente();
-    this.pasos = [];
+    this.agregarPaso()
     this.foto = {};
     if (fileInput) {
       fileInput.value = '';
@@ -125,6 +126,7 @@ export class CrearReceta {
 
   constructor() {
     this.agregarIngrediente();
+    this.agregarPaso();
   }
 
 
