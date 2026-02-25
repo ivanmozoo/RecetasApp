@@ -59,6 +59,59 @@
   display: block;
 }
 
+.resumen-container {
+  max-width: 700px;
+  margin: auto;
+  padding: 20px;
+}
+
+.resumen-titulo {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  background: linear-gradient(135deg, rgb(13, 110, 253), rgb(77, 171, 247));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.resumen-imagen {
+  max-height: 300px;
+  overflow: hidden;
+  border-radius: 16px;
+  margin-bottom: 20px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.resumen-imagen img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.resumen-descripcion {
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+
+.resumen-badge {
+  display: inline-block;
+  background: rgb(231, 241, 255);
+  color: rgb(13, 110, 253);
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.resumen-seccion {
+  margin-bottom: 20px;
+}
+
+.resumen-botones {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+
 @keyframes fadeInUp {
   from {
     opacity: 0;

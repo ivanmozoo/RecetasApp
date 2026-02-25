@@ -7,6 +7,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { RouterLink } from '@angular/router';
 import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
+import { TitleCasePipe } from '@angular/common';
+import { MatCardModule } from '@angular/material/card';
+import { MatListModule } from '@angular/material/list';
+import { MatDividerModule } from '@angular/material/divider';
 @Component({
   selector: 'app-crear-receta',
   imports: [
@@ -18,7 +22,11 @@ import { MatIconModule } from '@angular/material/icon';
     MatInputModule,
     RouterLink,
     MatSelectModule,
-    MatIconModule
+    MatIconModule,
+    TitleCasePipe,
+    MatCardModule,
+    MatListModule,
+    MatDividerModule
   ],
   templateUrl: './crear-receta.html',
   styleUrl: './crear-receta.css',
@@ -35,7 +43,7 @@ export class CrearReceta {
   });
 
   imagenFormGroup = this._formBuilder.group({
-    imagenCtrl: ['', Validators.required],
+    imagenCtrl: this._formBuilder.control<File | null>(null, Validators.required),
   });
 
   tipoFormGroup = this._formBuilder.group({
@@ -96,15 +104,14 @@ export class CrearReceta {
         return;
       }
 
+      this.imagenFormGroup.get('imagenCtrl')?.setValue(file);
+
       const reader = new FileReader();
       reader.onload = () => {
         this.foto.image = reader.result as string;
         this._cdr.detectChanges();
       };
       reader.readAsDataURL(file);
-    } else {
-      this.foto.image = undefined;
-      this.imagenFormGroup.get('imagenCtrl')?.setValue(null);
     }
   }
 
