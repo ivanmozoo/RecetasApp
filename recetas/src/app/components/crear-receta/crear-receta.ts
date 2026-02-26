@@ -4,13 +4,15 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatButtonModule } from '@angular/material/button';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
 import { TitleCasePipe } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { MatDividerModule } from '@angular/material/divider';
+import { Recetas } from '../../services/recetas';
+import { Receta } from '../../interfaces/receta';
 @Component({
   selector: 'app-crear-receta',
   imports: [
@@ -138,11 +140,45 @@ export class CrearReceta {
     }
   }
 
-  constructor() {
+  recetas: Receta[] = [];
+
+  crearReceta(stepper: any, fileInput?: HTMLInputElement) {
+    const maxIdNum = this.recetas.reduce((acc: number, r: Receta) => {
+      const idNum = parseInt(r.id, 10);
+      return isNaN(idNum) ? acc : Math.max(acc, idNum);
+    }, 0);
+    const nuevaReceta = {
+      id: String(maxIdNum + 1),
+      nombre: this.nombreFormGroup.get('nombreCtrl')!.value,
+      imagen: '',
+      descripcion: this.descripcionFormGroup.get('descripcionCtrl')!.value,
+      ingredientes: this.ingredientesArray.value,
+      pasos: this.pasosArray.value,
+      tipo: this.tipoFormGroup.get('tipoCtrl')!.value
+    };
+
+    this.recetasService.crearReceta(nuevaReceta).subscribe({
+      next: () => {
+        alert('Receta creada con éxito!');
+        this.resetFormulario(stepper, fileInput);
+        this.router.navigate(['/recetas']);
+      },
+      error: (err) => {
+        console.error(err);
+        alert('Error al crear la receta');
+      }
+    });
+  }
+
+  ngOnInit() {
+    this.recetasService.getRecetas().subscribe({
+      next: data => this.recetas = data,
+      error: err => console.error(err)
+    });
+  }
+
+  constructor(private recetasService: Recetas, private router: Router) {
     this.agregarIngrediente();
     this.agregarPaso();
   }
-
-
-
 }

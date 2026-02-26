@@ -22,14 +22,14 @@ export class RecetaDetalle implements OnInit {
   ) { }
 
   ngOnInit() {
-  const idParam = this.route.snapshot.paramMap.get('id');
-  if (!idParam) return;
+    const idParam = this.route.snapshot.paramMap.get('id');
+    if (!idParam) return;
 
-  this.recetasService.getRecetaById(Number(idParam)).subscribe({
-    next: receta => {
-      this.receta = receta;
-      queueMicrotask(() => this.cd.detectChanges());
-    }
-  });
-}
+    this.recetasService.getRecetaById(idParam).subscribe({
+      next: receta => {
+        this.receta = receta;
+        queueMicrotask(() => this.cd.detectChanges());
+      }
+    });
+  }
 }

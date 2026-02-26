@@ -16,7 +16,11 @@ export class Recetas {
     return this.http.get<Receta[]>(this.apiUrl);
   }
 
-  getRecetaById(id: number): Observable<Receta> {
+  getRecetaById(id: string): Observable<Receta> {
     return this.http.get<Receta>(`${this.apiUrl}/${id}`);
+  }
+
+  crearReceta(receta: any): Observable<Receta> {
+    return this.http.post<any>(this.apiUrl, receta);
   }
 }

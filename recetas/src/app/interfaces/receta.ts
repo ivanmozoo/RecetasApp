@@ -1,9 +1,9 @@
 import { Ingrediente } from "./ingrediente";
 
 export interface Receta {
-    id: number;
+    id: string;
     nombre: string;
-    imagen: string;
+    imagen?: string;
     descripcion: string;
     ingredientes: Ingrediente[];
     pasos: string[];

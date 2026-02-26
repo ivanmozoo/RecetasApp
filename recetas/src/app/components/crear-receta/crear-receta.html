@@ -208,7 +208,7 @@
                         <button mat-stroked-button color="warn" (click)="resetFormulario(stepper, fileInput)">
                             Resetear
                         </button>
-                        <button mat-raised-button color="primary" [disabled]="
+                        <button mat-raised-button color="primary" (click)="crearReceta(stepper, fileInput)" [disabled]="
                             nombreFormGroup.invalid ||
                             descripcionFormGroup.invalid ||
                             imagenFormGroup.invalid ||
