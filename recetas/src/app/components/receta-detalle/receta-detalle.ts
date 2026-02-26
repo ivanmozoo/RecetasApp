@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Receta } from '../../interfaces/receta';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Recetas } from '../../services/recetas';
@@ -12,8 +12,8 @@ import { MatButtonModule } from '@angular/material/button';
   templateUrl: './receta-detalle.html',
   styleUrl: './receta-detalle.css',
 })
-export class RecetaDetalle {
-  receta!: Receta;
+export class RecetaDetalle implements OnInit {
+  receta?: Receta;
 
   constructor(
     private route: ActivatedRoute,
@@ -22,12 +22,15 @@ export class RecetaDetalle {
 
   ngOnInit() {
     const id = Number(this.route.snapshot.paramMap.get('id'));
-    const receta = this.recetasService.getRecetaById(id);
-
-    if (receta) {
-      this.receta = receta;
-    } else {
-      alert('Receta no encontrada');
-    }
+    this.recetasService.getRecetaById(id).subscribe({
+      next: (receta) => {
+        if (receta) {
+          this.receta = receta;
+        } else {
+          alert('Receta no encontrada');
+        }
+      },
+      error: () => alert('Error al cargar la receta')
+    });
   }
 }

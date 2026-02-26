@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { Receta } from '../../interfaces/receta';
 import { FormsModule } from '@angular/forms';
 import { RecetaFilterPipe } from '../../pipes/receta-filter-pipe';
@@ -30,9 +30,14 @@ export class RecetasShow {
   filterIngrediente = '';
   selectTipo = '';
 
-  constructor(private recetasService: Recetas) {}
+  constructor(private recetasService: Recetas, private cd: ChangeDetectorRef) { }
 
   ngOnInit() {
-    this.recetas = this.recetasService.getRecetas();
+    this.recetasService.getRecetas().subscribe({
+      next: data => {
+        this.recetas = data;
+        queueMicrotask(() => this.cd.detectChanges());
+      }
+    });
   }
 }
