@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Receta } from '../../interfaces/receta';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Recetas } from '../../services/recetas';
@@ -17,20 +17,19 @@ export class RecetaDetalle implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private recetasService: Recetas
+    private recetasService: Recetas,
+    private cd: ChangeDetectorRef
   ) { }
 
   ngOnInit() {
-    const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.recetasService.getRecetaById(id).subscribe({
-      next: (receta) => {
-        if (receta) {
-          this.receta = receta;
-        } else {
-          alert('Receta no encontrada');
-        }
-      },
-      error: () => alert('Error al cargar la receta')
-    });
-  }
+  const idParam = this.route.snapshot.paramMap.get('id');
+  if (!idParam) return;
+
+  this.recetasService.getRecetaById(Number(idParam)).subscribe({
+    next: receta => {
+      this.receta = receta;
+      queueMicrotask(() => this.cd.detectChanges());
+    }
+  });
+}
 }

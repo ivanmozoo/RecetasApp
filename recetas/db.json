@@ -586,6 +586,441 @@
                 "Dejar enfriar y refrigerar antes de servir."
             ],
             "tipo": "postre"
+        },
+        {
+            "id": 15,
+            "nombre": "Bocadillo de pollo y aguacate",
+            "imagen": "assets/bocadillo-pollo-aguacate.jpg",
+            "descripcion": "Bocadillo crujiente relleno de pollo a la plancha y aguacate fresco.",
+            "ingredientes": [
+                {
+                    "nombre": "Pan baguette",
+                    "cantidad": "1"
+                },
+                {
+                    "nombre": "Pechuga de pollo",
+                    "cantidad": "1",
+                    "medida": "unidad"
+                },
+                {
+                    "nombre": "Aguacate",
+                    "cantidad": "1"
+                },
+                {
+                    "nombre": "Lechuga",
+                    "cantidad": "2",
+                    "medida": "hojas"
+                },
+                {
+                    "nombre": "Tomate",
+                    "cantidad": "1"
+                },
+                {
+                    "nombre": "Mayonesa",
+                    "cantidad": "1",
+                    "medida": "cucharada"
+                }
+            ],
+            "pasos": [
+                "Sazonar la pechuga de pollo con sal y un poco de pimienta.",
+                "Calentar una sartén con unas gotas de aceite de oliva a fuego medio.",
+                "Cocinar la pechuga durante 4-5 minutos por cada lado hasta que esté bien hecha.",
+                "Retirar el pollo y dejar reposar 2 minutos antes de cortarlo en tiras.",
+                "Abrir el pan baguette por la mitad sin separarlo completamente.",
+                "Untar la base del pan con una cucharada de mayonesa.",
+                "Colocar una capa de lechuga limpia y seca.",
+                "Añadir las rodajas de tomate.",
+                "Incorporar el pollo en tiras y el aguacate cortado en láminas.",
+                "Cerrar el bocadillo, presionar ligeramente y servir."
+            ],
+            "tipo": "almuerzo"
+        },
+        {
+            "id": 16,
+            "nombre": "Wrap integral de atún",
+            "imagen": "assets/wrap-atun.jpg",
+            "descripcion": "Wrap ligero relleno de atún, verduras frescas y yogur.",
+            "ingredientes": [
+                {
+                    "nombre": "Tortilla integral",
+                    "cantidad": "1"
+                },
+                {
+                    "nombre": "Atún en lata",
+                    "cantidad": "1"
+                },
+                {
+                    "nombre": "Lechuga",
+                    "cantidad": "1",
+                    "medida": "puñado"
+                },
+                {
+                    "nombre": "Zanahoria rallada",
+                    "cantidad": "1/2"
+                },
+                {
+                    "nombre": "Yogur natural",
+                    "cantidad": "2",
+                    "medida": "cucharadas"
+                }
+            ],
+            "pasos": [
+                "Escurrir bien el atún para eliminar el exceso de aceite o agua.",
+                "Colocar el atún en un bol y mezclarlo con el yogur natural hasta obtener una crema homogénea.",
+                "Extender la tortilla integral sobre una superficie plana.",
+                "Distribuir la mezcla de atún en el centro de la tortilla.",
+                "Añadir la lechuga troceada y la zanahoria rallada por encima.",
+                "Doblar los extremos laterales hacia dentro.",
+                "Enrollar firmemente desde la parte inferior hasta formar un wrap.",
+                "Cortar por la mitad si se desea y servir."
+            ],
+            "tipo": "almuerzo"
+        },
+        {
+            "id": 17,
+            "nombre": "Tortilla francesa con espinacas",
+            "imagen": "assets/tortilla-espinacas.jpg",
+            "descripcion": "Cena ligera y rápida con huevos y espinacas salteadas.",
+            "ingredientes": [
+                {
+                    "nombre": "Huevos",
+                    "cantidad": "2"
+                },
+                {
+                    "nombre": "Espinacas",
+                    "cantidad": "1",
+                    "medida": "puñado"
+                },
+                {
+                    "nombre": "Sal",
+                    "cantidad": "Al gusto"
+                },
+                {
+                    "nombre": "Aceite de oliva",
+                    "cantidad": "1",
+                    "medida": "cucharadita"
+                }
+            ],
+            "pasos": [
+                "Lavar bien las espinacas y escurrirlas.",
+                "Calentar una sartén con una cucharadita de aceite de oliva.",
+                "Añadir las espinacas y saltearlas durante 2-3 minutos hasta que reduzcan su tamaño.",
+                "Retirar las espinacas y reservar.",
+                "Batir los huevos en un bol con una pizca de sal.",
+                "Verter los huevos batidos en la misma sartén caliente.",
+                "Cuando empiece a cuajar, añadir las espinacas en el centro.",
+                "Doblar la tortilla por la mitad y cocinar un minuto más.",
+                "Servir caliente."
+            ],
+            "tipo": "cena"
+        },
+        {
+            "id": 18,
+            "nombre": "Crepes salados de jamón y queso",
+            "imagen": "assets/crepes-salados.jpg",
+            "descripcion": "Crepes rellenos de jamón y queso fundido.",
+            "ingredientes": [
+                {
+                    "nombre": "Masa de crepe",
+                    "cantidad": "4",
+                    "medida": "unidades"
+                },
+                {
+                    "nombre": "Jamón cocido",
+                    "cantidad": "4",
+                    "medida": "lonchas"
+                },
+                {
+                    "nombre": "Queso",
+                    "cantidad": "4",
+                    "medida": "lonchas"
+                }
+            ],
+            "pasos": [
+                "Si la masa no está preparada, mezclar harina, leche y huevo hasta obtener una mezcla líquida y sin grumos.",
+                "Calentar una sartén antiadherente a fuego medio y engrasarla ligeramente.",
+                "Verter un cucharón de masa y mover la sartén para repartirla de forma uniforme.",
+                "Cocinar durante 1-2 minutos hasta que los bordes empiecen a despegarse.",
+                "Dar la vuelta al crepe y cocinar 1 minuto más.",
+                "Colocar una loncha de jamón y una de queso en el centro del crepe.",
+                "Doblar los laterales hacia dentro y luego enrollar o plegar por la mitad.",
+                "Dejar en la sartén unos segundos más hasta que el queso se funda.",
+                "Servir caliente."
+            ],
+            "tipo": "cena"
+        },
+        {
+            "id": 19,
+            "nombre": "Salmón a la plancha",
+            "imagen": "assets/salmon-plancha.jpg",
+            "descripcion": "Filete de salmón saludable con limón.",
+            "ingredientes": [
+                {
+                    "nombre": "Salmón",
+                    "cantidad": "1",
+                    "medida": "filete"
+                },
+                {
+                    "nombre": "Limón",
+                    "cantidad": "1/2"
+                },
+                {
+                    "nombre": "Sal",
+                    "cantidad": "Al gusto"
+                }
+            ],
+            "pasos": [
+                "Secar el filete de salmón con papel de cocina.",
+                "Sazonar con sal y, si se desea, un poco de pimienta.",
+                "Calentar una sartén a fuego medio-alto con unas gotas de aceite.",
+                "Colocar el salmón con la piel hacia abajo.",
+                "Cocinar durante 3-4 minutos sin moverlo.",
+                "Dar la vuelta con cuidado y cocinar 2-3 minutos más.",
+                "Retirar del fuego y añadir unas gotas de limón por encima.",
+                "Servir inmediatamente."
+            ],
+            "tipo": "cena"
+        },
+        {
+            "id": 20,
+            "nombre": "Ensalada de quinoa",
+            "imagen": "assets/ensalada-quinoa.jpg",
+            "descripcion": "Ensalada ligera con quinoa y verduras.",
+            "ingredientes": [
+                {
+                    "nombre": "Quinoa",
+                    "cantidad": "100",
+                    "medida": "g"
+                },
+                {
+                    "nombre": "Pepino",
+                    "cantidad": "1/2"
+                },
+                {
+                    "nombre": "Tomate",
+                    "cantidad": "1"
+                },
+                {
+                    "nombre": "Aceite de oliva",
+                    "cantidad": "1",
+                    "medida": "cucharada"
+                }
+            ],
+            "pasos": [
+                "Enjuagar la quinoa bajo el grifo durante 1 minuto.",
+                "Colocar la quinoa en un cazo con el doble de agua.",
+                "Llevar a ebullición y cocinar a fuego medio durante 12-15 minutos.",
+                "Escurrir si es necesario y dejar enfriar.",
+                "Lavar y cortar el tomate y el pepino en cubos pequeños.",
+                "Mezclar la quinoa con las verduras en un bol grande.",
+                "Añadir una cucharada de aceite de oliva y mezclar bien.",
+                "Servir fría o templada."
+            ],
+            "tipo": "cena"
+        },
+        {
+            "id": 21,
+            "nombre": "Tostadas con aguacate",
+            "imagen": "assets/tostadas-aguacate.jpg",
+            "descripcion": "Desayuno saludable con pan integral y aguacate.",
+            "ingredientes": [
+                {
+                    "nombre": "Pan integral",
+                    "cantidad": "2",
+                    "medida": "rebanadas"
+                },
+                {
+                    "nombre": "Aguacate",
+                    "cantidad": "1/2"
+                },
+                {
+                    "nombre": "Sal",
+                    "cantidad": "Al gusto"
+                }
+            ],
+            "pasos": [
+                "Tostar las rebanadas de pan hasta que estén doradas y crujientes.",
+                "Cortar el aguacate por la mitad, retirar el hueso y extraer la pulpa.",
+                "Machacar el aguacate con un tenedor hasta obtener una textura cremosa.",
+                "Añadir una pizca de sal y mezclar.",
+                "Untar la mezcla sobre las tostadas aún calientes.",
+                "Servir inmediatamente."
+            ],
+            "tipo": "desayuno"
+        },
+        {
+            "id": 22,
+            "nombre": "Yogur con granola y frutas",
+            "imagen": "assets/yogur-granola.jpg",
+            "descripcion": "Yogur natural con granola crujiente y fruta fresca.",
+            "ingredientes": [
+                {
+                    "nombre": "Yogur natural",
+                    "cantidad": "1"
+                },
+                {
+                    "nombre": "Granola",
+                    "cantidad": "50",
+                    "medida": "g"
+                },
+                {
+                    "nombre": "Frutas variadas",
+                    "cantidad": "1",
+                    "medida": "puñado"
+                }
+            ],
+            "pasos": [
+                "Colocar el yogur natural en un bol o vaso.",
+                "Añadir la granola por encima de forma uniforme.",
+                "Lavar y cortar las frutas en trozos pequeños.",
+                "Colocar las frutas sobre la granola.",
+                "Servir inmediatamente para mantener el crujiente."
+            ],
+            "tipo": "desayuno"
+        },
+        {
+            "id": 23,
+            "nombre": "Pancakes clásicos",
+            "imagen": "assets/pancakes.jpg",
+            "descripcion": "Pancakes esponjosos ideales para el desayuno.",
+            "ingredientes": [
+                {
+                    "nombre": "Harina",
+                    "cantidad": "150",
+                    "medida": "g"
+                },
+                {
+                    "nombre": "Leche",
+                    "cantidad": "200",
+                    "medida": "ml"
+                },
+                {
+                    "nombre": "Huevo",
+                    "cantidad": "1"
+                },
+                {
+                    "nombre": "Azúcar",
+                    "cantidad": "2",
+                    "medida": "cucharadas"
+                },
+                {
+                    "nombre": "Miel",
+                    "cantidad": "Al gusto"
+                }
+            ],
+            "pasos": [
+                "Tamizar la harina en un bol grande para evitar grumos.",
+                "Añadir el azúcar y mezclar.",
+                "Incorporar el huevo y verter la leche poco a poco mientras se mezcla.",
+                "Remover hasta conseguir una masa homogénea y sin grumos.",
+                "Calentar una sartén antiadherente a fuego medio.",
+                "Verter un cucharón pequeño de masa en el centro de la sartén.",
+                "Cocinar hasta que aparezcan burbujas en la superficie (1-2 minutos).",
+                "Dar la vuelta al pancake y cocinar 1 minuto más.",
+                "Repetir el proceso con el resto de la masa.",
+                "Servir con miel al gusto."
+            ],
+            "tipo": "desayuno"
+        },
+        {
+            "id": 24,
+            "nombre": "Galletas caseras",
+            "imagen": "assets/galletas.jpg",
+            "descripcion": "Galletas crujientes ideales para la merienda.",
+            "ingredientes": [
+                {
+                    "nombre": "Harina",
+                    "cantidad": "200",
+                    "medida": "g"
+                },
+                {
+                    "nombre": "Azúcar",
+                    "cantidad": "100",
+                    "medida": "g"
+                },
+                {
+                    "nombre": "Mantequilla",
+                    "cantidad": "120",
+                    "medida": "g"
+                },
+                {
+                    "nombre": "Huevo",
+                    "cantidad": "1"
+                }
+            ],
+            "pasos": [
+                "Precalentar el horno a 180°C.",
+                "En un bol grande, mezclar la mantequilla a temperatura ambiente con el azúcar hasta obtener una crema.",
+                "Añadir el huevo y mezclar bien.",
+                "Incorporar la harina poco a poco hasta formar una masa homogénea.",
+                "Formar pequeñas bolas con la masa y colocarlas en una bandeja con papel de horno.",
+                "Aplastar ligeramente cada bola con un tenedor.",
+                "Hornear durante 12-15 minutos hasta que estén doradas.",
+                "Dejar enfriar antes de servir."
+            ],
+            "tipo": "merienda"
+        },
+        {
+            "id": 25,
+            "nombre": "Batido de plátano",
+            "imagen": "assets/batido-platano.jpeg",
+            "descripcion": "Batido energético ideal para media tarde.",
+            "ingredientes": [
+                {
+                    "nombre": "Plátano",
+                    "cantidad": "1"
+                },
+                {
+                    "nombre": "Leche",
+                    "cantidad": "250",
+                    "medida": "ml"
+                },
+                {
+                    "nombre": "Miel",
+                    "cantidad": "1",
+                    "medida": "cucharada"
+                }
+            ],
+            "pasos": [
+                "Pelar el plátano y cortarlo en trozos.",
+                "Introducir el plátano en la batidora.",
+                "Añadir la leche y la cucharada de miel.",
+                "Batir durante 30-40 segundos hasta que quede homogéneo.",
+                "Servir frío en un vaso."
+            ],
+            "tipo": "merienda"
+        },
+        {
+            "id": 26,
+            "nombre": "Sandwich mixto",
+            "imagen": "assets/sandwich-mixto.jpg",
+            "descripcion": "Clásico sandwich caliente de jamón y queso.",
+            "ingredientes": [
+                {
+                    "nombre": "Pan de molde",
+                    "cantidad": "2",
+                    "medida": "rebanadas"
+                },
+                {
+                    "nombre": "Jamón cocido",
+                    "cantidad": "2",
+                    "medida": "lonchas"
+                },
+                {
+                    "nombre": "Queso",
+                    "cantidad": "2",
+                    "medida": "lonchas"
+                }
+            ],
+            "pasos": [
+                "Colocar una loncha de jamón y otra de queso entre las dos rebanadas de pan.",
+                "Presionar ligeramente para compactar el sandwich.",
+                "Calentar una sartén o sandwichera a temperatura media.",
+                "Colocar el sandwich y cocinar 2-3 minutos por cada lado.",
+                "Retirar cuando el pan esté dorado y el queso fundido.",
+                "Cortar por la mitad y servir caliente."
+            ],
+            "tipo": "merienda"
         }
     ]
 }
