@@ -143,14 +143,15 @@ export class CrearReceta {
   recetas: Receta[] = [];
 
   crearReceta(stepper: any, fileInput?: HTMLInputElement) {
-    const maxIdNum = this.recetas.reduce((acc: number, r: Receta) => {
+    const maxIdNum = this.recetas.reduce((acc, r) => {
       const idNum = parseInt(r.id, 10);
       return isNaN(idNum) ? acc : Math.max(acc, idNum);
     }, 0);
+
     const nuevaReceta = {
       id: String(maxIdNum + 1),
       nombre: this.nombreFormGroup.get('nombreCtrl')!.value,
-      imagen: '',
+      imagen: this.foto.image,
       descripcion: this.descripcionFormGroup.get('descripcionCtrl')!.value,
       ingredientes: this.ingredientesArray.value,
       pasos: this.pasosArray.value,
@@ -171,13 +172,12 @@ export class CrearReceta {
   }
 
   apiRunning?: boolean;
-  receta?: Receta;
 
   ngOnInit() {
     this.recetasService.getRecetas().subscribe({
       next: data => {
         if (data && data.length > 0) {
-          this.receta = data[0];
+          this.recetas = data;
           this.apiRunning = true;
         } else {
           this.apiRunning = false;
@@ -191,7 +191,7 @@ export class CrearReceta {
       }
     });
   }
-  
+
   constructor(
     private recetasService: Recetas,
     private router: Router
