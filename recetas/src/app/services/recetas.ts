@@ -23,4 +23,8 @@ export class Recetas {
   crearReceta(receta: any): Observable<Receta> {
     return this.http.post<any>(this.apiUrl, receta);
   }
+
+  deleteReceta(id: string): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  }
 }

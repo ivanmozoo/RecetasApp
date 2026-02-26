@@ -5,6 +5,7 @@ import { Recetas } from '../../services/recetas';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatButtonModule } from '@angular/material/button';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-receta-detalle',
@@ -18,8 +19,26 @@ export class RecetaDetalle implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private recetasService: Recetas,
-    private cd: ChangeDetectorRef
+    private cd: ChangeDetectorRef,
+    private router: Router
   ) { }
+
+  eliminarReceta() {
+    if (!this.receta) return;
+
+    if (!confirm('¿Estás seguro de que quieres eliminar esta receta?')) return;
+
+    this.recetasService.deleteReceta(this.receta.id).subscribe({
+      next: () => {
+        alert('Receta eliminada correctamente');
+        this.router.navigate(['/recetas']);
+      },
+      error: (err) => {
+        console.error(err);
+        alert('Error al eliminar la receta');
+      }
+    });
+  }
 
   ngOnInit() {
     const idParam = this.route.snapshot.paramMap.get('id');

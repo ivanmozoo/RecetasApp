@@ -177,7 +177,10 @@ export class CrearReceta {
     });
   }
 
-  constructor(private recetasService: Recetas, private router: Router) {
+  constructor(
+    private recetasService: Recetas,
+    private router: Router
+  ) {
     this.agregarIngrediente();
     this.agregarPaso();
   }

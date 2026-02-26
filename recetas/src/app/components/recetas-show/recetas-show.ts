@@ -30,7 +30,10 @@ export class RecetasShow {
   filterIngrediente = '';
   selectTipo = '';
 
-  constructor(private recetasService: Recetas, private cd: ChangeDetectorRef) { }
+  constructor(
+    private recetasService: Recetas,
+    private cd: ChangeDetectorRef
+  ) { }
 
   ngOnInit() {
     this.recetasService.getRecetas().subscribe({
