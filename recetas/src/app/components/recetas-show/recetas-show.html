@@ -59,17 +59,23 @@
     @let recetasFiltradas = (recetas | recetaFilter:filterSearch | ingredienteFilter:filterIngrediente |
     tipoSelect:selectTipo);
 
+    @if (apiRunning === undefined) {
+    <div class="d-flex justify-content-center align-items-center mt-5" style="min-height: 300px;">
+        <div class="spinner-border text-primary"></div>
+    </div>
+    } @else if (recetasFiltradas.length && apiRunning) {
     <div class="mb-5 mt-3 row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 g-4">
-        @if (recetasFiltradas.length) {
         @for (receta of recetasFiltradas; track receta.id) {
         <div class="col" title="Ver receta" [routerLink]="['/receta-detalle', receta.id]">
             <app-item-receta [receta]="receta"></app-item-receta>
         </div>
         }
-        } @else {
-        <div class="text-center mt-5">
-            <h3 class="text-muted">No hay recetas disponibles</h3>
-        </div>
-        }
     </div>
+    } @else {
+    <div class="d-flex justify-content-center align-items-center mt-5" style="min-height: 400px;">
+        <div class="alert alert-warning text-center shadow-sm p-4" style="max-width: 500px; width: 100%;">
+            No se pudieron cargar las recetas. Inténtalo más tarde.
+        </div>
+    </div>
+    }
 </div>

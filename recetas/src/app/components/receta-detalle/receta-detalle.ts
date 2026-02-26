@@ -15,6 +15,7 @@ import { Router } from '@angular/router';
 })
 export class RecetaDetalle implements OnInit {
   receta?: Receta;
+  apiRunning?: boolean;
 
   constructor(
     private route: ActivatedRoute,
@@ -25,7 +26,6 @@ export class RecetaDetalle implements OnInit {
 
   eliminarReceta() {
     if (!this.receta) return;
-
     if (!confirm('¿Estás seguro de que quieres eliminar esta receta?')) return;
 
     this.recetasService.deleteReceta(this.receta.id).subscribe({
@@ -42,11 +42,20 @@ export class RecetaDetalle implements OnInit {
 
   ngOnInit() {
     const idParam = this.route.snapshot.paramMap.get('id');
-    if (!idParam) return;
+    if (!idParam) {
+      this.apiRunning = false;
+      return;
+    }
 
     this.recetasService.getRecetaById(idParam).subscribe({
       next: receta => {
         this.receta = receta;
+        this.apiRunning = true;
+        queueMicrotask(() => this.cd.detectChanges());
+      },
+      error: err => {
+        console.error(err);
+        this.apiRunning = false;
         queueMicrotask(() => this.cd.detectChanges());
       }
     });

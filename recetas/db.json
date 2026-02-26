@@ -961,36 +961,6 @@
       "tipo": "merienda"
     },
     {
-      "id": "25",
-      "nombre": "Batido de plátano",
-      "imagen": "assets/batido-platano.jpeg",
-      "descripcion": "Batido energético ideal para media tarde.",
-      "ingredientes": [
-        {
-          "nombre": "Plátano",
-          "cantidad": "1"
-        },
-        {
-          "nombre": "Leche",
-          "cantidad": "250",
-          "medida": "ml"
-        },
-        {
-          "nombre": "Miel",
-          "cantidad": "1",
-          "medida": "cucharada"
-        }
-      ],
-      "pasos": [
-        "Pelar el plátano y cortarlo en trozos.",
-        "Introducir el plátano en la batidora.",
-        "Añadir la leche y la cucharada de miel.",
-        "Batir durante 30-40 segundos hasta que quede homogéneo.",
-        "Servir frío en un vaso."
-      ],
-      "tipo": "merienda"
-    },
-    {
       "id": "26",
       "nombre": "Sandwich mixto",
       "imagen": "assets/sandwich-mixto.jpg",
@@ -1021,23 +991,6 @@
         "Cortar por la mitad y servir caliente."
       ],
       "tipo": "merienda"
-    },
-    {
-      "id": "27",
-      "nombre": "aaaaaaaaa",
-      "imagen": "",
-      "descripcion": "aaaaaaaa",
-      "ingredientes": [
-        {
-          "nombre": "aaaaaaa",
-          "cantidad": "3",
-          "medida": ""
-        }
-      ],
-      "pasos": [
-        "aaaaaaaa"
-      ],
-      "tipo": "cena"
     }
   ]
 }

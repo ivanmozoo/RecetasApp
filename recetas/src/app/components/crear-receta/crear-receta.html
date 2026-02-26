@@ -6,6 +6,13 @@
             </a>
             <h2 class="titulo-crear">Creación de receta</h2>
         </div>
+        @if (apiRunning === undefined) {
+        <div class="text-center mt-5">
+            <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Cargando...</span>
+            </div>
+        </div>
+        } @else if (apiRunning) {
         <mat-stepper orientation="vertical" #stepper>
             <mat-step [stepControl]="nombreFormGroup">
                 <form [formGroup]="nombreFormGroup">
@@ -222,5 +229,12 @@
                 </div>
             </mat-step>
         </mat-stepper>
+        } @else {
+        <div class="d-flex justify-content-center align-items-center mt-5" style="min-height: 400px;">
+            <div class="alert alert-warning text-center shadow-sm p-4" style="max-width: 500px; width: 100%;">
+                No se pudo cargar el formulario. Inténtalo más tarde.
+            </div>
+        </div>
+        }
     </div>
 </main>

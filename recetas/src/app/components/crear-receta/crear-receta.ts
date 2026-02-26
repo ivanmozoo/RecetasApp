@@ -170,13 +170,28 @@ export class CrearReceta {
     });
   }
 
+  apiRunning?: boolean;
+  receta?: Receta;
+
   ngOnInit() {
     this.recetasService.getRecetas().subscribe({
-      next: data => this.recetas = data,
-      error: err => console.error(err)
+      next: data => {
+        if (data && data.length > 0) {
+          this.receta = data[0];
+          this.apiRunning = true;
+        } else {
+          this.apiRunning = false;
+        }
+        this._cdr.detectChanges();
+      },
+      error: err => {
+        console.error(err);
+        this.apiRunning = false;
+        this._cdr.detectChanges();
+      }
     });
   }
-
+  
   constructor(
     private recetasService: Recetas,
     private router: Router

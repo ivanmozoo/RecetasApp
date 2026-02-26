@@ -25,6 +25,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 })
 export class RecetasShow {
   recetas: Receta[] = [];
+  apiRunning?: boolean;
 
   filterSearch = '';
   filterIngrediente = '';
@@ -39,6 +40,12 @@ export class RecetasShow {
     this.recetasService.getRecetas().subscribe({
       next: data => {
         this.recetas = data;
+        this.apiRunning = true;
+        queueMicrotask(() => this.cd.detectChanges());
+      },
+      error: err => {
+        console.error(err);
+        this.apiRunning = false;
         queueMicrotask(() => this.cd.detectChanges());
       }
     });
