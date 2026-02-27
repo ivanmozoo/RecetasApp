@@ -19,7 +19,8 @@
                     <ng-template matStepLabel>Tíulo</ng-template>
                     <mat-form-field appearance="outline" class="w-100 mt-3">
                         <mat-label>Nombre</mat-label>
-                        <input matInput placeholder="Ej. Natillas" formControlName="nombreCtrl" required>
+                        <input matInput placeholder="Ej. Natillas" appInicialMayuscula formControlName="nombreCtrl"
+                            required>
                     </mat-form-field>
                     <div>
                         <button matButton matStepperNext>Siguiente</button>
@@ -31,7 +32,7 @@
                     <ng-template matStepLabel>Descripción</ng-template>
                     <mat-form-field appearance="outline" class="w-100 mt-3">
                         <mat-label>Descripción</mat-label>
-                        <input matInput formControlName="descripcionCtrl"
+                        <input matInput formControlName="descripcionCtrl" appInicialMayuscula
                             placeholder="Ej. Deliciosa pasta con salsa pesto" required>
                     </mat-form-field>
                     <div>
@@ -97,7 +98,8 @@
                             <div class="d-flex gap-4">
                                 <mat-form-field appearance="outline" class="w-100">
                                     <mat-label>Nombre</mat-label>
-                                    <input matInput formControlName="nombre" placeholder="Ej. Huevos" required>
+                                    <input matInput formControlName="nombre" appInicialMayuscula
+                                        placeholder="Ej. Huevos" required>
                                 </mat-form-field>
                                 <mat-form-field appearance="outline" class="w-100">
                                     <mat-label>Cantidad</mat-label>
@@ -139,8 +141,8 @@
                             </div>
                             <mat-form-field appearance="outline" class="w-100">
                                 <mat-label>Paso</mat-label>
-                                <input matInput [formControlName]="i" placeholder="Ej. Separar las yemas de la clara"
-                                    required>
+                                <input matInput [formControlName]="i" appInicialMayuscula
+                                    placeholder="Ej. Separar las yemas de la clara" required>
                             </mat-form-field>
                         </div>
                         }

@@ -16,6 +16,7 @@ import { Receta } from '../../interfaces/receta';
 import { ConfirmDialog } from '../confirm-dialog/confirm-dialog';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { InfoDialog } from '../info-dialog/info-dialog';
+import { InicialMayuscula } from '../../directives/inicial-mayuscula';
 @Component({
   selector: 'app-crear-receta',
   imports: [
@@ -33,7 +34,7 @@ import { InfoDialog } from '../info-dialog/info-dialog';
     MatListModule,
     MatDividerModule,
     MatDialogModule,
-    InfoDialog
+    InicialMayuscula
   ],
   templateUrl: './crear-receta.html',
   styleUrl: './crear-receta.css',
