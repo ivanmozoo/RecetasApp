@@ -23,24 +23,24 @@
         </div>
         } @else if (receta && apiRunning) {
         <div class="recipe-hero mb-5 shadow-lg position-relative overflow-hidden rounded-4">
-            <img [src]="receta?.imagen" class="w-100 h-100" [alt]="receta?.nombre">
+            <img [src]="receta.imagen" class="w-100 h-100" [alt]="receta.nombre">
             <div class="hero-overlay d-flex flex-column justify-content-end p-4 p-md-5">
-                <span class="badge bg-primary fw-bold mb-2 align-self-start text-capitalize">{{receta?.tipo}}</span>
-                <h1 class="display-3 fw-bold text-white mb-0">{{receta?.nombre}}</h1>
+                <span class="badge bg-primary fw-bold mb-2 align-self-start text-capitalize">{{receta.tipo}}</span>
+                <h1 class="display-3 fw-bold text-white mb-0">{{receta.nombre}}</h1>
             </div>
         </div>
         <div class="row g-5">
             <div class="col-lg-4">
                 <section class="mb-5">
                     <h4 class="fw-bold border-start border-primary border-4 ps-3 mb-4">Descripción</h4>
-                    <p class="text-secondary lh-lg">{{receta?.descripcion}}</p>
+                    <p class="text-secondary lh-lg">{{receta.descripcion}}</p>
                 </section>
                 <div class="card border-0 shadow-sm bg-light p-4 rounded-4 sticky-top" style="top: 20px;">
                     <div class="d-flex justify-content-between align-items-center mb-4">
                         <h4 class="fw-bold mb-0">Ingredientes</h4>
                     </div>
                     <ul class="list-unstyled mb-4">
-                        @for (ingrediente of receta?.ingredientes; track $index) {
+                        @for (ingrediente of receta.ingredientes; track $index) {
                         <li class="mb-3 d-flex align-items-center gap-2">
                             <i class="bi bi-dot text-primary small"></i>
                             <span class="text-secondary">{{ ingrediente.cantidad }}
@@ -56,7 +56,7 @@
                     <h2 class="fw-bold mb-0">Preparación</h2>
                 </div>
                 <div>
-                    @for (paso of receta?.pasos; track $index; let i = $index) {
+                    @for (paso of receta.pasos; track $index; let i = $index) {
                     <div
                         class="step-card d-flex align-items-start gap-4 p-4 mb-4 bg-white shadow-sm border rounded-4 transition">
                         <div
