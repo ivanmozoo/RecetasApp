@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { ConfirmDialog } from '../confirm-dialog/confirm-dialog';
 import { InfoDialog } from '../info-dialog/info-dialog';
+import { SnackBar } from '../snack-bar/snack-bar';
 
 @Component({
   selector: 'app-receta-detalle',
@@ -25,7 +26,8 @@ export class RecetaDetalle implements OnInit {
     private recetasService: Recetas,
     private cd: ChangeDetectorRef,
     private router: Router,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private snackBar: SnackBar,
   ) { }
 
   eliminarReceta() {
@@ -44,14 +46,7 @@ export class RecetaDetalle implements OnInit {
       if (resultado) {
         this.recetasService.deleteReceta(this.receta!.id).subscribe({
           next: () => {
-            this.dialog.open(InfoDialog, {
-              width: '350px',
-              data: {
-                titulo: 'Éxito',
-                mensaje: 'La receta se ha eliminado correctamente.',
-                textoBoton: 'Aceptar'
-              }
-            });
+            this.snackBar.openSnackBar('Receta eliminada exitosamente');
             this.router.navigate(['/recetas']);
           },
           error: (err) => {

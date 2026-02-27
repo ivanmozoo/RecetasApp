@@ -17,6 +17,7 @@ import { ConfirmDialog } from '../confirm-dialog/confirm-dialog';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { InfoDialog } from '../info-dialog/info-dialog';
 import { InicialMayuscula } from '../../directives/inicial-mayuscula';
+import { SnackBar } from '../snack-bar/snack-bar';
 @Component({
   selector: 'app-crear-receta',
   imports: [
@@ -204,6 +205,7 @@ export class CrearReceta {
           next: () => {
             this.resetFormulario(stepper, fileInput);
             this.router.navigate(['/recetas']);
+            this.snackBar.openSnackBar('Receta creada exitosamente');
           },
           error: (err) => {
             console.error(err);
@@ -245,7 +247,8 @@ export class CrearReceta {
   constructor(
     private recetasService: Recetas,
     private router: Router,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private snackBar: SnackBar
   ) {
     this.agregarIngrediente();
     this.agregarPaso();
