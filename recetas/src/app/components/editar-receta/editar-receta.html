@@ -1,1 +1,242 @@
-<p>editar-receta works!</p>
+<main class="min-vh-90 d-flex flex-column">
+    <div class="container py-5 mb-5 animation">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <a [routerLink]="['/receta-detalle', receta.id]" class="btn-volver text-decoration-none">
+                <i class="bi bi-arrow-left"></i> Volver a la receta
+            </a>
+            <h2 class="titulo-crear">Edición de receta</h2>
+        </div>
+        @if (apiRunning === undefined) {
+        <div class="text-center mt-5">
+            <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Cargando...</span>
+            </div>
+        </div>
+        } @else if (apiRunning) {
+        <mat-stepper orientation="vertical" #stepper>
+            <mat-step [stepControl]="nombreFormGroup">
+                <form [formGroup]="nombreFormGroup">
+                    <ng-template matStepLabel>Tíulo</ng-template>
+                    <mat-form-field appearance="outline" class="w-100 mt-3">
+                        <mat-label>Nombre</mat-label>
+                        <input matInput placeholder="Ej. Natillas" appInicialMayuscula formControlName="nombreCtrl"
+                            required>
+                    </mat-form-field>
+                    <div>
+                        <button matButton matStepperNext>Siguiente</button>
+                    </div>
+                </form>
+            </mat-step>
+            <mat-step [stepControl]="descripcionFormGroup">
+                <form [formGroup]="descripcionFormGroup">
+                    <ng-template matStepLabel>Descripción</ng-template>
+                    <mat-form-field appearance="outline" class="w-100 mt-3">
+                        <mat-label>Descripción</mat-label>
+                        <input matInput formControlName="descripcionCtrl" appInicialMayuscula
+                            placeholder="Ej. Deliciosa pasta con salsa pesto" required>
+                    </mat-form-field>
+                    <div>
+                        <button matButton matStepperPrevious>Atrás</button>
+                        <button matButton matStepperNext>Siguiente</button>
+                    </div>
+                </form>
+            </mat-step>
+            <mat-step [stepControl]="imagenFormGroup">
+                <form [formGroup]="imagenFormGroup">
+                    <ng-template matStepLabel>Imagen</ng-template>
+                    <div class="mb-3 mt-2">
+                        <input id="image" type="file" class="form-control mt-3" #fileInput
+                            (change)="changeImage(fileInput)" accept="image/*" required>
+                    </div>
+                    @if (foto.image) {
+                    <div class="image-preview-container mt-4">
+                        <img [src]="foto.image" alt="Vista previa" class="image-preview">
+                    </div>
+                    }
+                    <div class="mt-4">
+                        <button matButton matStepperPrevious>Atrás</button>
+                        <button matButton matStepperNext>Siguiente</button>
+                    </div>
+                </form>
+            </mat-step>
+            <mat-step [stepControl]="tipoFormGroup">
+                <form [formGroup]="tipoFormGroup">
+                    <ng-template matStepLabel>Tipo</ng-template>
+                    <mat-form-field appearance="outline" class="w-50 mt-3">
+                        <mat-label>Tipo de receta</mat-label>
+                        <mat-select formControlName="tipoCtrl" required>
+                            <mat-option value="desayuno">Desayuno</mat-option>
+                            <mat-option value="cena">Cena</mat-option>
+                            <mat-option value="merienda">Merienda</mat-option>
+                            <mat-option value="almuerzo">Almuerzo</mat-option>
+                            <mat-option value="comida">Comida</mat-option>
+                            <mat-option value="postre">Postre</mat-option>
+                            <mat-option value="bebida">Bebida</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <div>
+                        <button mat-button matStepperPrevious>Atrás</button>
+                        <button mat-button matStepperNext>Siguiente</button>
+                    </div>
+                </form>
+            </mat-step>
+            <mat-step [stepControl]="ingredientesFormGroup">
+                <form [formGroup]="ingredientesFormGroup">
+                    <ng-template matStepLabel>Ingredientes</ng-template>
+                    <div formArrayName="ingredientes">
+                        @for (ingrediente of ingredientesArray.controls; track ingrediente; let i = $index) {
+                        <div [formGroupName]="i" class="mb-3">
+                            <div class="d-flex justify-content-between align-items-center mt-2">
+                                <mat-label class="fw-bold">
+                                    Ingrediente {{ i + 1 }}
+                                </mat-label>
+                                <button mat-icon-button color="warn" type="button" (click)="eliminarIngrediente(i)"
+                                    [disabled]="ingredientesArray.length === 1">
+                                    <mat-icon>delete</mat-icon>
+                                </button>
+                            </div>
+                            <div class="d-flex gap-4">
+                                <mat-form-field appearance="outline" class="w-100">
+                                    <mat-label>Nombre</mat-label>
+                                    <input matInput formControlName="nombre" appInicialMayuscula
+                                        placeholder="Ej. Huevos" required>
+                                </mat-form-field>
+                                <mat-form-field appearance="outline" class="w-100">
+                                    <mat-label>Cantidad</mat-label>
+                                    <input matInput formControlName="cantidad" placeholder="Ej. 1/2" required>
+                                </mat-form-field>
+                                <mat-form-field appearance="outline" class="w-100">
+                                    <mat-label>Medida</mat-label>
+                                    <input matInput formControlName="medida" placeholder="Ej. Gramos">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        }
+                    </div>
+                    <div class="mt-2">
+                        <button mat-raised-button color="primary" type="button" (click)="agregarIngrediente()"
+                            class="d-flex align-items-center gap-2">
+                            <mat-icon>add</mat-icon>
+                            <span>Añadir Ingrediente {{ingredientesArray.length + 1}}</span>
+                        </button>
+                    </div>
+                    <div class="mt-4">
+                        <button mat-button matStepperPrevious>Atrás</button>
+                        <button mat-button matStepperNext>Siguiente</button>
+                    </div>
+                </form>
+            </mat-step>
+            <mat-step [stepControl]="pasosFormGroup">
+                <form [formGroup]="pasosFormGroup">
+                    <ng-template matStepLabel>Pasos</ng-template>
+                    <div formArrayName="pasos">
+                        @for (paso of pasosArray.controls; track paso; let i = $index) {
+                        <div class="mb-2">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <mat-label class="fw-bold">Paso {{ i + 1 }}</mat-label>
+                                <button mat-icon-button color="warn" type="button" (click)="eliminarPaso(i)"
+                                    [disabled]="pasosArray.length === 1">
+                                    <mat-icon>delete</mat-icon>
+                                </button>
+                            </div>
+                            <mat-form-field appearance="outline" class="w-100">
+                                <mat-label>Paso</mat-label>
+                                <input matInput [formControlName]="i" appInicialMayuscula
+                                    placeholder="Ej. Separar las yemas de la clara" required>
+                            </mat-form-field>
+                        </div>
+                        }
+                    </div>
+                    <div>
+                        <button mat-raised-button color="primary" type="button" (click)="agregarPaso()"
+                            class="d-flex align-items-center gap-2">
+                            <mat-icon>add</mat-icon>
+                            <span>Añadir Paso {{ pasosArray.length + 1 }}</span>
+                        </button>
+                    </div>
+                    <div class="mt-4">
+                        <button mat-button matStepperPrevious>Atrás</button>
+                        <button mat-button matStepperNext>Siguiente</button>
+                    </div>
+                </form>
+            </mat-step>
+            <mat-step>
+                <ng-template matStepLabel>Resumen</ng-template>
+                <div class="resumen-container">
+                    @if (nombreFormGroup.get('nombreCtrl')?.value) {
+                    <h3 class="resumen-titulo">
+                        {{ nombreFormGroup.get('nombreCtrl')?.value }}
+                    </h3>
+                    }
+                    @if (foto.image) {
+                    <div class="resumen-imagen">
+                        <img [src]="foto.image" alt="Imagen receta">
+                    </div>
+                    }
+                    @if (descripcionFormGroup.get('descripcionCtrl')?.value) {
+                    <p class="resumen-descripcion">
+                        {{ descripcionFormGroup.get('descripcionCtrl')?.value }}
+                    </p>
+                    }
+                    @if (tipoFormGroup.get('tipoCtrl')?.value) {
+                    <div class="resumen-badge">
+                        {{ tipoFormGroup.get('tipoCtrl')?.value | titlecase }}
+                    </div>
+                    }
+                    @if (pasosConValor) {
+                    <div class="resumen-seccion">
+                        <h4>Pasos</h4>
+                        <ol>
+                            @for (paso of pasosArray.controls; track paso; let i = $index) {
+                            @if (paso?.value) {
+                            <li>{{ paso.value }}</li>
+                            }
+                            }
+                        </ol>
+                    </div>
+                    }
+                    @if (ingredientesConValor) {
+                    <div class="resumen-seccion">
+                        <h4>Ingredientes</h4>
+                        <ul>
+                            @for (ingrediente of ingredientesArray.controls; track ingrediente; let i = $index) {
+                            @if (ingrediente?.get('nombre')?.value || ingrediente?.get('cantidad')?.value ||
+                            ingrediente?.get('medida')?.value) {
+                            <li>
+                                {{ ingrediente.get('cantidad')?.value }}
+                                {{ ingrediente.get('medida')?.value }}
+                                {{ ingrediente.get('nombre')?.value }}
+                            </li>
+                            }
+                            }
+                        </ul>
+                    </div>
+                    }
+                    <div class="resumen-botones">
+                        <button mat-button matStepperPrevious>Atrás</button>
+                        <button mat-stroked-button (click)="confirmarReset(stepper, fileInput)">
+                            Resetear
+                        </button>
+                        <button mat-raised-button color="primary" (click)="crearReceta(stepper, fileInput)" [disabled]="
+                            nombreFormGroup.invalid ||
+                            descripcionFormGroup.invalid ||
+                            imagenFormGroup.invalid ||
+                            tipoFormGroup.invalid ||
+                            ingredientesFormGroup.invalid ||
+                            pasosFormGroup.invalid
+                            ">
+                            Editar Receta
+                        </button>
+                    </div>
+                </div>
+            </mat-step>
+        </mat-stepper>
+        } @else {
+        <div class="d-flex justify-content-center align-items-center mt-5" style="min-height: 400px;">
+            <div class="alert alert-warning text-center shadow-sm p-4" style="max-width: 500px; width: 100%;">
+                No se pudo cargar el formulario de edición. Inténtalo más tarde.
+            </div>
+        </div>
+        }
+    </div>
+</main>
