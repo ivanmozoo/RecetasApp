@@ -13,6 +13,8 @@ import { MatListModule } from '@angular/material/list';
 import { MatDividerModule } from '@angular/material/divider';
 import { Recetas } from '../../services/recetas';
 import { Receta } from '../../interfaces/receta';
+import { ConfirmDialog } from '../confirm-dialog/confirm-dialog';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 @Component({
   selector: 'app-crear-receta',
   imports: [
@@ -28,7 +30,8 @@ import { Receta } from '../../interfaces/receta';
     TitleCasePipe,
     MatCardModule,
     MatListModule,
-    MatDividerModule
+    MatDividerModule,
+    MatDialogModule
   ],
   templateUrl: './crear-receta.html',
   styleUrl: './crear-receta.css',
@@ -124,6 +127,23 @@ export class CrearReceta {
     );
   }
 
+  confirmarReset(stepper: any, fileInput?: HTMLInputElement) {
+    const dialogRef = this.dialog.open(ConfirmDialog, {
+      width: '400px',
+      data: {
+        titulo: 'Resetear formulario',
+        mensaje: 'Se borrará el contenido de todos los campos. ¿Deseas continuar?',
+        textoCancelar: 'Cancelar',
+        textoConfirmar: 'Resetear'
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(confirmado => {
+      if (!confirmado) return;
+      this.resetFormulario(stepper, fileInput);
+    });
+  }
+
   resetFormulario(stepper: any, fileInput?: HTMLInputElement) {
     stepper.reset();
     this.nombreFormGroup.reset();
@@ -158,17 +178,30 @@ export class CrearReceta {
       tipo: this.tipoFormGroup.get('tipoCtrl')!.value
     };
 
-    this.recetasService.crearReceta(nuevaReceta).subscribe({
-      next: () => {
-        alert('Receta creada con éxito!');
-        this.resetFormulario(stepper, fileInput);
-        this.router.navigate(['/recetas']);
-      },
-      error: (err) => {
-        console.error(err);
-        alert('Error al crear la receta');
+    const dialogRef = this.dialog.open(ConfirmDialog, {
+      width: '400px',
+      data: {
+        titulo: 'Crear receta',
+        mensaje: `¿Estás seguro de que quieres crear "${this.nombreFormGroup.get('nombreCtrl')!.value}"?`,
+        textoCancelar: 'Cancelar',
+        textoConfirmar: 'Crear'
       }
     });
+
+    dialogRef.afterClosed().subscribe(resultado => {
+      if (resultado) {
+        this.recetasService.crearReceta(nuevaReceta).subscribe({
+          next: () => {
+            this.resetFormulario(stepper, fileInput);
+            this.router.navigate(['/recetas']);
+          },
+          error: (err) => {
+            console.error(err);
+            alert('Error al crear la receta');
+          }
+        });
+      }
+    })
   }
 
   apiRunning?: boolean;
@@ -194,7 +227,8 @@ export class CrearReceta {
 
   constructor(
     private recetasService: Recetas,
-    private router: Router
+    private router: Router,
+    private dialog: MatDialog
   ) {
     this.agregarIngrediente();
     this.agregarPaso();

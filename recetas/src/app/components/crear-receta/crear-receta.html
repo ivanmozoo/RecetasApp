@@ -212,7 +212,7 @@
                     }
                     <div class="resumen-botones">
                         <button mat-button matStepperPrevious>Atrás</button>
-                        <button mat-stroked-button color="warn" (click)="resetFormulario(stepper, fileInput)">
+                        <button mat-stroked-button (click)="confirmarReset(stepper, fileInput)">
                             Resetear
                         </button>
                         <button mat-raised-button color="primary" (click)="crearReceta(stepper, fileInput)" [disabled]="
