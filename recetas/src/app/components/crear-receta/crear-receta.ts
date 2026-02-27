@@ -18,6 +18,8 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { InfoDialog } from '../info-dialog/info-dialog';
 import { InicialMayuscula } from '../../directives/inicial-mayuscula';
 import { SnackBar } from '../snack-bar/snack-bar';
+import { noEspacios } from '../../directives/no-espacios';
+
 @Component({
   selector: 'app-crear-receta',
   imports: [
@@ -44,11 +46,11 @@ export class CrearReceta {
   private _formBuilder = inject(FormBuilder);
 
   nombreFormGroup = this._formBuilder.group({
-    nombreCtrl: ['', Validators.required],
+    nombreCtrl: ['', [Validators.required, noEspacios]],
   });
 
   descripcionFormGroup = this._formBuilder.group({
-    descripcionCtrl: ['', Validators.required],
+    descripcionCtrl: ['', [Validators.required, noEspacios]],
   });
 
   imagenFormGroup = this._formBuilder.group({
@@ -73,8 +75,8 @@ export class CrearReceta {
 
   private crearIngrediente(): FormGroup {
     return this._formBuilder.group({
-      nombre: ['', Validators.required],
-      cantidad: ['', Validators.required],
+      nombre: ['', [Validators.required, noEspacios]],
+      cantidad: ['', [Validators.required, noEspacios]],
       medida: ['']
     });
   }
@@ -92,7 +94,7 @@ export class CrearReceta {
   }
 
   agregarPaso() {
-    this.pasosArray.push(this._formBuilder.control('', Validators.required));
+    this.pasosArray.push(this._formBuilder.control('', [Validators.required, noEspacios]));
   }
 
   eliminarPaso(index: number) {
