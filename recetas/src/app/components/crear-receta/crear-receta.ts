@@ -15,6 +15,7 @@ import { Recetas } from '../../services/recetas';
 import { Receta } from '../../interfaces/receta';
 import { ConfirmDialog } from '../confirm-dialog/confirm-dialog';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { InfoDialog } from '../info-dialog/info-dialog';
 @Component({
   selector: 'app-crear-receta',
   imports: [
@@ -31,7 +32,8 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
     MatCardModule,
     MatListModule,
     MatDividerModule,
-    MatDialogModule
+    MatDialogModule,
+    InfoDialog
   ],
   templateUrl: './crear-receta.html',
   styleUrl: './crear-receta.css',
@@ -110,7 +112,14 @@ export class CrearReceta {
 
       this.imagenFormGroup.get('imagenCtrl')?.setValue(file);
     } else {
-      alert('Solo se permiten imágenes');
+      this.dialog.open(InfoDialog, {
+        width: '350px',
+        data: {
+          titulo: 'Error',
+          mensaje: 'Solo se admiten imagenes.',
+          textoBoton: 'Aceptar'
+        }
+      });
       inputFile.value = '';
       this.foto.image = undefined;
       this.imagenFormGroup.get('imagenCtrl')?.setValue(null);
@@ -197,7 +206,14 @@ export class CrearReceta {
           },
           error: (err) => {
             console.error(err);
-            alert('Error al crear la receta');
+            this.dialog.open(InfoDialog, {
+              width: '350px',
+              data: {
+                titulo: 'Error',
+                mensaje: 'Ha ocurrido un error al crear la receta.',
+                textoBoton: 'Aceptar'
+              }
+            });
           }
         });
       }

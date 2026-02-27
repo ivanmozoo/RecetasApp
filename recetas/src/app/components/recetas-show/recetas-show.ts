@@ -39,7 +39,7 @@ export class RecetasShow {
   ngOnInit() {
     this.recetasService.getRecetas().subscribe({
       next: data => {
-        this.recetas = data;
+        this.recetas = data.sort((a, b) => Number(b.id) - Number(a.id));
         this.apiRunning = true;
         queueMicrotask(() => this.cd.detectChanges());
       },

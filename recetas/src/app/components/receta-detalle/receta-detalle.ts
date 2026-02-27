@@ -8,6 +8,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { Router } from '@angular/router';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { ConfirmDialog } from '../confirm-dialog/confirm-dialog';
+import { InfoDialog } from '../info-dialog/info-dialog';
 
 @Component({
   selector: 'app-receta-detalle',
@@ -43,11 +44,26 @@ export class RecetaDetalle implements OnInit {
       if (resultado) {
         this.recetasService.deleteReceta(this.receta!.id).subscribe({
           next: () => {
+            this.dialog.open(InfoDialog, {
+              width: '350px',
+              data: {
+                titulo: 'Éxito',
+                mensaje: 'La receta se ha eliminado correctamente.',
+                textoBoton: 'Aceptar'
+              }
+            });
             this.router.navigate(['/recetas']);
           },
           error: (err) => {
             console.error(err);
-            alert('Error al eliminar la receta');
+            this.dialog.open(InfoDialog, {
+              width: '350px',
+              data: {
+                titulo: 'Error',
+                mensaje: 'Ha ocurrido un error al eliminar la receta.',
+                textoBoton: 'Aceptar'
+              }
+            });
           }
         });
       }
