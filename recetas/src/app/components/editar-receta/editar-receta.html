@@ -1,7 +1,7 @@
 <main class="min-vh-90 d-flex flex-column">
     <div class="container py-5 mb-5 animation">
         <div class="d-flex justify-content-between align-items-center mb-4">
-            <a [routerLink]="['/receta-detalle', receta.id]" class="btn-volver text-decoration-none">
+            <a [routerLink]="['/receta-detalle', recetaId]" class="btn-volver text-decoration-none">
                 <i class="bi bi-arrow-left"></i> Volver a la receta
             </a>
             <h2 class="titulo-crear">Edición de receta</h2>
@@ -45,8 +45,16 @@
                 <form [formGroup]="imagenFormGroup">
                     <ng-template matStepLabel>Imagen</ng-template>
                     <div class="mb-3 mt-2">
+                        <button mat-raised-button color="primary" type="button" (click)="fileInput.click()">
+                            Seleccionar imagen
+                        </button>
+                        @if (foto.image) {
+                        <span class="ms-3">
+                            Imagen actual cargada
+                        </span>
+                        }
                         <input id="image" type="file" class="form-control mt-3" #fileInput
-                            (change)="changeImage(fileInput)" accept="image/*" required>
+                            (change)="changeImage(fileInput)" accept="image/*" hidden required>
                     </div>
                     @if (foto.image) {
                     <div class="image-preview-container mt-4">
@@ -217,7 +225,7 @@
                         <button mat-stroked-button (click)="confirmarReset(stepper, fileInput)">
                             Resetear
                         </button>
-                        <button mat-raised-button color="primary" (click)="crearReceta(stepper, fileInput)" [disabled]="
+                        <button mat-raised-button color="primary" (click)="editarReceta(stepper, fileInput)" [disabled]="
                             nombreFormGroup.invalid ||
                             descripcionFormGroup.invalid ||
                             imagenFormGroup.invalid ||

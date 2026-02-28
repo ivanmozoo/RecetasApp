@@ -4,7 +4,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatButtonModule } from '@angular/material/button';
-import { Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
 import { TitleCasePipe } from '@angular/common';
@@ -54,7 +54,7 @@ export class EditarReceta {
   });
 
   imagenFormGroup = this._formBuilder.group({
-    imagenCtrl: this._formBuilder.control<File | null>(null, Validators.required),
+    imagenCtrl: this._formBuilder.control<File | null>(null),
   });
 
   tipoFormGroup = this._formBuilder.group({
@@ -101,7 +101,6 @@ export class EditarReceta {
     this.pasosArray.removeAt(index);
   }
 
-  private _cdr = inject(ChangeDetectorRef);
   foto: { image?: string } = {};
 
   changeImage(inputFile: HTMLInputElement) {
@@ -125,8 +124,6 @@ export class EditarReceta {
         }
       });
       inputFile.value = '';
-      this.foto.image = undefined;
-      this.imagenFormGroup.get('imagenCtrl')?.setValue(null);
     }
   }
 
@@ -173,29 +170,57 @@ export class EditarReceta {
     }
   }
 
-  recetas: Receta[] = [];
+  private cargarDatosEnFormulario(receta: Receta) {
 
-  crearReceta(stepper: any, fileInput?: HTMLInputElement) {
-    const maxIdNum = this.recetas.reduce((acc, r) => {
-      const idNum = parseInt(r.id, 10);
-      return isNaN(idNum) ? acc : Math.max(acc, idNum);
-    }, 0);
+    this.nombreFormGroup.patchValue({
+      nombreCtrl: receta.nombre
+    });
 
-    const recetaEditada = {
-      id: String(maxIdNum + 1),
-      nombre: this.nombreFormGroup.get('nombreCtrl')!.value,
+    this.descripcionFormGroup.patchValue({
+      descripcionCtrl: receta.descripcion
+    });
+
+    this.tipoFormGroup.patchValue({
+      tipoCtrl: receta.tipo
+    });
+
+    this.foto.image = receta.imagen;
+
+    this.ingredientesArray.clear();
+    receta.ingredientes.forEach(i => {
+      this.ingredientesArray.push(
+        this._formBuilder.group({
+          nombre: [i.nombre, [Validators.required, noEspacios]],
+          cantidad: [i.cantidad, [Validators.required, noEspacios]],
+          medida: [i.medida]
+        })
+      );
+    });
+
+    this.pasosArray.clear();
+    receta.pasos.forEach(p => {
+      this.pasosArray.push(
+        this._formBuilder.control(p, [Validators.required, noEspacios])
+      );
+    });
+  }
+
+  editarReceta(stepper: any, fileInput?: HTMLInputElement) {
+    const recetaEditada: Receta = {
+      id: this.recetaId,
+      nombre: this.nombreFormGroup.get('nombreCtrl')!.value as string,
       imagen: this.foto.image,
-      descripcion: this.descripcionFormGroup.get('descripcionCtrl')!.value,
+      descripcion: this.descripcionFormGroup.get('descripcionCtrl')!.value as string,
       ingredientes: this.ingredientesArray.value,
-      pasos: this.pasosArray.value,
-      tipo: this.tipoFormGroup.get('tipoCtrl')!.value
+      pasos: this.pasosArray.value as string[],
+      tipo: this.tipoFormGroup.get('tipoCtrl')!.value as Receta['tipo']
     };
 
     const dialogRef = this.dialog.open(ConfirmDialog, {
       width: '400px',
       data: {
         titulo: 'Editar receta',
-        mensaje: `¿Estás seguro de que quieres editar "${this.nombreFormGroup.get('nombreCtrl')!.value}"?`,
+        mensaje: `¿Estás seguro de que quieres editar "${recetaEditada.nombre}"?`,
         textoCancelar: 'Cancelar',
         textoConfirmar: 'Editar'
       }
@@ -203,7 +228,7 @@ export class EditarReceta {
 
     dialogRef.afterClosed().subscribe(resultado => {
       if (resultado) {
-        this.recetasService.crearReceta(recetaEditada).subscribe({
+        this.recetasService.updateReceta(this.recetaId, recetaEditada).subscribe({
           next: () => {
             this.resetFormulario(stepper, fileInput);
             this.router.navigate(['/recetas']);
@@ -226,16 +251,14 @@ export class EditarReceta {
   }
 
   apiRunning?: boolean;
+  recetaId!: string;
 
   ngOnInit() {
-    this.recetasService.getRecetas().subscribe({
-      next: data => {
-        if (data && data.length > 0) {
-          this.recetas = data;
-          this.apiRunning = true;
-        } else {
-          this.apiRunning = false;
-        }
+    this.recetaId = this.route.snapshot.paramMap.get('id')!;
+    this.recetasService.getRecetaById(this.recetaId).subscribe({
+      next: receta => {
+        this.cargarDatosEnFormulario(receta);
+        this.apiRunning = true;
         this._cdr.detectChanges();
       },
       error: err => {
@@ -250,7 +273,9 @@ export class EditarReceta {
     private recetasService: Recetas,
     private router: Router,
     private dialog: MatDialog,
-    private snackBar: SnackBar
+    private snackBar: SnackBar,
+    private route: ActivatedRoute,
+    private _cdr: ChangeDetectorRef
   ) {
     this.agregarIngrediente();
     this.agregarPaso();

@@ -27,4 +27,8 @@ export class Recetas {
   deleteReceta(id: string): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
+
+  updateReceta(id: string, receta: Receta): Observable<Receta> {
+  return this.http.put<Receta>(`${this.apiUrl}/${id}`, receta);
+}
 }
