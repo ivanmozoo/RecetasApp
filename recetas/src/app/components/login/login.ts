@@ -7,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrl: './login.css',
 })
 export class Login {
+  mostrarPassword = false;
 
+  togglePassword() {
+    this.mostrarPassword = !this.mostrarPassword;
+  }
 }

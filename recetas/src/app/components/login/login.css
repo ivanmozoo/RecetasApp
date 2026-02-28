@@ -1,0 +1,91 @@
+.login-wrapper {
+    min-height: calc(100vh - 160px);
+    background: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.7)), url('https://images.unsplash.com/photo-1495195129352-aeb325a55b65?auto=format&fit=crop&w=1920&q=80');
+    background-size: cover;
+    background-position: center;
+    padding: 40px 0;
+}
+
+.login-card {
+    border-radius: 2rem !important;
+    background-color: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(10px);
+}
+
+.logo-container {
+    background-color: rgb(13, 110, 253);
+    padding: 15px;
+    border-radius: 1.2rem;
+    box-shadow: 0 8px 16px rgba(13, 110, 253, 0.2);
+}
+
+.login-logo {
+    height: 40px;
+    filter: brightness(0) invert(1);
+}
+
+.custom-input-group {
+    border-radius: 15px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.custom-input-group .form-control,
+.custom-input-group .input-group-text {
+    padding: 12px 15px;
+    border: 1px solid rgb(226, 232, 240);
+}
+
+.custom-input-group .form-control:focus {
+    box-shadow: none;
+    border-color: rgb(13, 110, 253);
+}
+
+.custom-input-group:focus-within {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1) !important;
+}
+
+.shadow-btn {
+    transition: all 0.3s ease;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+.shadow-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 20px -5px rgba(13, 110, 253, 0.4);
+}
+
+.shadow-btn:active {
+    transform: translateY(-1px);
+}
+
+.form-check-input:checked {
+    background-color: rgb(13, 110, 253);
+    border-color: rgb(13, 110, 253);
+}
+
+.animation {
+    animation: fadeInUp 0.4s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 576px) {
+    .login-card {
+        padding: 30px 20px !important;
+        border-radius: 1.5rem !important;
+    }
+}
