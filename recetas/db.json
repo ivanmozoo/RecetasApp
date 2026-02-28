@@ -1048,5 +1048,12 @@
       ],
       "tipo": "postre"
     }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "username": "juanito",
+      "password": "123456"
+    }
   ]
 }
