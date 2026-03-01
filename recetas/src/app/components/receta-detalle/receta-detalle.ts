@@ -55,7 +55,7 @@ export class RecetaDetalle implements OnInit {
               width: '350px',
               data: {
                 titulo: 'Error',
-                mensaje: 'Ha ocurrido un error al eliminar la receta.',
+                mensaje: 'Ha ocurrido un error al eliminar la receta',
                 textoBoton: 'Aceptar'
               }
             });

@@ -40,6 +40,7 @@
 
 .custom-input-group .form-control:focus {
     box-shadow: none;
+    border-color: rgb(13, 110, 253);
 }
 
 .custom-input-group:focus-within {
@@ -60,19 +61,6 @@
 .shadow-btn:hover {
     transform: translateY(-3px);
     box-shadow: 0 12px 20px -5px rgba(13, 110, 253, 0.4);
-    filter: brightness(1.1);
-}
-
-.form-check-input {
-    width: 1.2em;
-    height: 1.2em;
-    margin-top: 0.2em;
-    cursor: pointer;
-}
-
-.form-check-input:checked {
-    background-color: rgb(13, 110, 253);
-    border-color: rgb(13, 110, 253);
 }
 
 .animation {
@@ -90,7 +78,6 @@
         transform: translateY(0);
     }
 }
-
 
 @media (max-width: 576px) {
     .register-card {

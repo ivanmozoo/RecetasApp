@@ -9,14 +9,14 @@
                         </div>
                         <h2 class="fw-bold text-dark">Iniciar Sesión</h2>
                     </div>
-                    <form>
+                    <form [formGroup]="form" (ngSubmit)="onSubmit()">
                         <div class="mb-4">
                             <label class="form-label fw-semibold small text-secondary">Nombre de usuario</label>
                             <div class="input-group custom-input-group shadow-sm">
                                 <span class="input-group-text bg-white border-end-0">
                                     <i class="bi bi-person text-primary"></i>
                                 </span>
-                                <input type="text" class="form-control border-start-0 ps-0"
+                                <input type="text" formControlName="username" class="form-control border-start-0 ps-0"
                                     placeholder="Introduce un nombre">
                             </div>
                         </div>
@@ -30,10 +30,10 @@
                                 <span class="input-group-text bg-white border-end-0">
                                     <i class="bi bi-lock text-primary"></i>
                                 </span>
-                                <input [type]="mostrarPassword ? 'text' : 'password'"
+                                <input [type]="mostrarPassword ? 'text' : 'password'" formControlName="password"
                                     class="form-control border-start-0 border-end-0 ps-0"
                                     placeholder="Introduce una contraseña">
-                                <button type="button" class="input-group-text bg-white border-start-0"
+                                <button type="submit" class="input-group-text bg-white border-start-0"
                                     (click)="togglePassword()">
                                     <i class="bi" [class.bi-eye]="!mostrarPassword"
                                         [class.bi-eye-slash]="mostrarPassword">

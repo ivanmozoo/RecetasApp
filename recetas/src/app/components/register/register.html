@@ -9,14 +9,14 @@
                         </div>
                         <h2 class="fw-bold text-dark mb-1">Registrarse</h2>
                     </div>
-                    <form>
+                    <form [formGroup]="form" (ngSubmit)="onSubmit()">
                         <div class="mb-3">
                             <label class="form-label fw-semibold small text-secondary">Nombre de usuario</label>
                             <div class="input-group custom-input-group shadow-sm">
                                 <span class="input-group-text bg-white border-end-0">
                                     <i class="bi bi-person text-primary"></i>
                                 </span>
-                                <input type="text" class="form-control border-start-0 ps-0"
+                                <input type="text" formControlName="username" class="form-control border-start-0 ps-0"
                                     placeholder="Crea un nombre de usuario">
                             </div>
                         </div>
@@ -26,8 +26,8 @@
                                 <span class="input-group-text bg-white border-end-0">
                                     <i class="bi bi-lock text-primary"></i>
                                 </span>
-                                <input type="password" class="form-control border-start-0 ps-0"
-                                    placeholder="Crea una contraseña">
+                                <input type="password" formControlName="password"
+                                    class="form-control border-start-0 ps-0" placeholder="Crea una contraseña">
                             </div>
                         </div>
                         <div class="mb-3">
@@ -36,11 +36,11 @@
                                 <span class="input-group-text bg-white border-end-0">
                                     <i class="bi bi-shield-check text-primary"></i>
                                 </span>
-                                <input type="password" class="form-control border-start-0 ps-0"
-                                    placeholder="Confirma la contraseña">
+                                <input type="password" formControlName="confirmPassword"
+                                    class="form-control border-start-0 ps-0" placeholder="Confirma la contraseña">
                             </div>
                         </div>
-                        <button class="btn btn-primary w-100 py-3 fw-bold rounded-pill shadow-btn mt-3 mb-4">CREAR
+                        <button type="submit" class="btn btn-primary w-100 py-3 fw-bold rounded-pill shadow-btn mt-3 mb-4">CREAR
                             CUENTA
                             <i class="bi bi-check-circle ms-2"></i>
                         </button>

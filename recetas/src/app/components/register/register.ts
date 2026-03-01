@@ -1,12 +1,90 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
+import { Auth } from '../../services/auth';
+import { MatDialog } from '@angular/material/dialog';
+import { InfoDialog } from '../info-dialog/info-dialog';
+import { noEspacios } from '../../directives/no-espacios';
 
 @Component({
   selector: 'app-register',
-  imports: [RouterLink],
+  imports: [CommonModule, ReactiveFormsModule, RouterLink],
   templateUrl: './register.html',
   styleUrl: './register.css',
 })
 export class Register {
+  form;
 
+  constructor(
+    private fb: FormBuilder,
+    private auth: Auth,
+    private router: Router,
+    private dialog: MatDialog,
+  ) {
+    this.form = this.fb.group({
+      username: ['', [Validators.required, noEspacios]],
+      password: ['', [Validators.required, noEspacios]],
+      confirmPassword: ['', [Validators.required, noEspacios]]
+    });
+  }
+
+  onSubmit() {
+    if (this.form.invalid) {
+      this.dialog.open(InfoDialog, {
+        width: '350px',
+        data: {
+          titulo: 'Error',
+          mensaje: 'No puede haber campos vacíos ni con espacios',
+          textoBoton: 'Aceptar'
+        }
+      });
+      return;
+    }
+
+    const username: string = this.form.get('username')!.value!;
+    const password: string = this.form.get('password')!.value!;
+    const confirmPassword: string = this.form.get('confirmPassword')!.value!;
+
+    if (password !== confirmPassword) {
+      this.dialog.open(InfoDialog, {
+        width: '350px',
+        data: {
+          titulo: 'Error',
+          mensaje: 'Las contraseñas no coinciden',
+          textoBoton: 'Aceptar'
+        }
+      });
+      return;
+    }
+
+    this.auth.userExist(username).subscribe(users => {
+      if (users.length > 0) {
+        this.dialog.open(InfoDialog, {
+          width: '350px',
+          data: {
+            titulo: 'Error',
+            mensaje: 'El nombre de usuario ya existe',
+            textoBoton: 'Aceptar'
+          }
+        });
+        return;
+      }
+
+      this.auth.register({ username, password })
+        .subscribe(() => {
+          const dialogRef = this.dialog.open(InfoDialog, {
+            width: '350px',
+            data: {
+              titulo: 'Éxito',
+              mensaje: 'Cuenta creada correctamente',
+              textoBoton: 'Aceptar'
+            }
+          });
+          dialogRef.afterClosed().subscribe(() => {
+            this.router.navigate(['/login']);
+          });
+        });
+    });
+  }
 }

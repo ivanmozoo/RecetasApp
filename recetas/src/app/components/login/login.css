@@ -28,12 +28,14 @@
     border-radius: 15px;
     overflow: hidden;
     transition: all 0.3s ease;
+    border: 1px solid rgb(226, 232, 240);
 }
 
 .custom-input-group .form-control,
 .custom-input-group .input-group-text {
-    padding: 12px 15px;
-    border: 1px solid rgb(226, 232, 240);
+    padding: 10px 15px;
+    border: none;
+    background-color: rgb(255, 255, 255);
 }
 
 .custom-input-group .form-control:focus {
@@ -43,6 +45,7 @@
 
 .custom-input-group:focus-within {
     transform: translateY(-2px);
+    border-color: rgb(13, 110, 253);
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1) !important;
 }
 
@@ -51,6 +54,7 @@
     letter-spacing: 1px;
     text-transform: uppercase;
     font-size: 0.9rem;
+    background: linear-gradient(45deg, rgb(13, 110, 253), rgb(11, 94, 215));
 }
 
 .shadow-btn:hover {

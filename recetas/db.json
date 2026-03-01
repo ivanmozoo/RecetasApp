@@ -1054,6 +1054,21 @@
       "id": "1",
       "username": "juanito",
       "password": "123456"
+    },
+    {
+      "id": 2,
+      "username": "ivan",
+      "password": "123456789"
+    },
+    {
+      "id": 3,
+      "username": "pepe",
+      "password": "123456789"
+    },
+    {
+      "id": 4,
+      "username": "asier",
+      "password": "123"
     }
   ]
 }
