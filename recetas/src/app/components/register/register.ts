@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
@@ -22,6 +22,7 @@ export class Register {
     private auth: Auth,
     private router: Router,
     private dialog: MatDialog,
+    private cd: ChangeDetectorRef
   ) {
     this.form = this.fb.group({
       username: ['', [Validators.required, noEspacios]],
@@ -35,6 +36,7 @@ export class Register {
     this.auth.userExist('test').subscribe({
       next: () => {
         this.apiRunning = true;
+        this.cd.detectChanges();
       },
       error: () => {
         const dialogRef = this.dialog.open(InfoDialog, {

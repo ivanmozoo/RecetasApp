@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { Auth } from '../../services/auth';
@@ -23,6 +23,7 @@ export class Login {
     private auth: Auth,
     private router: Router,
     private dialog: MatDialog,
+    private cd: ChangeDetectorRef
   ) {
     this.form = this.fb.group({
       username: ['', [Validators.required, noEspacios]],
@@ -34,6 +35,7 @@ export class Login {
     this.auth.userExist('test').subscribe({
       next: () => {
         this.apiRunning = true;
+        this.cd.detectChanges();
       },
       error: () => {
         const dialogRef = this.dialog.open(InfoDialog, {
