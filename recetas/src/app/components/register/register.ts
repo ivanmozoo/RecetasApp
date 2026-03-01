@@ -15,6 +15,7 @@ import { noEspacios } from '../../directives/no-espacios';
 })
 export class Register {
   form;
+  apiRunning = false;
 
   constructor(
     private fb: FormBuilder,
@@ -29,7 +30,32 @@ export class Register {
     });
   }
 
+  ngOnInit() {
+
+    this.auth.userExist('test').subscribe({
+      next: () => {
+        this.apiRunning = true;
+      },
+      error: () => {
+        const dialogRef = this.dialog.open(InfoDialog, {
+          width: '350px',
+          data: {
+            titulo: 'Servicio no disponible',
+            mensaje: 'El servicio no está disponible en este momento.',
+            textoBoton: 'Aceptar'
+          }
+        });
+
+        dialogRef.afterClosed().subscribe(() => {
+          this.router.navigate(['/']);
+        });
+      }
+    });
+  }
+
   onSubmit() {
+    if (!this.apiRunning) return;
+
     if (this.form.invalid) {
       if (this.form.get('password')?.hasError('minlength')) {
         this.dialog.open(InfoDialog, {

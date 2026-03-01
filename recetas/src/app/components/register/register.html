@@ -1,4 +1,5 @@
 <div class="register-wrapper d-flex align-items-center justify-content-center">
+    @if (apiRunning) {
     <div class="container py-5">
         <div class="row justify-content-center">
             <div class="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-5">
@@ -40,7 +41,8 @@
                                     class="form-control border-start-0 ps-0" placeholder="Confirma la contraseña">
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary w-100 py-3 fw-bold rounded-pill shadow-btn mt-3 mb-4">CREAR
+                        <button type="submit"
+                            class="btn btn-primary w-100 py-3 fw-bold rounded-pill shadow-btn mt-3 mb-4">CREAR
                             CUENTA
                             <i class="bi bi-check-circle ms-2"></i>
                         </button>
@@ -55,4 +57,5 @@
             </div>
         </div>
     </div>
+    }
 </div>

@@ -22,11 +22,33 @@ export class Login {
     private fb: FormBuilder,
     private auth: Auth,
     private router: Router,
-    private dialog: MatDialog
+    private dialog: MatDialog,
   ) {
     this.form = this.fb.group({
       username: ['', [Validators.required, noEspacios]],
       password: ['', [Validators.required, noEspacios]]
+    });
+  }
+
+  ngOnInit() {
+    this.auth.userExist('test').subscribe({
+      next: () => {
+        this.apiRunning = true;
+      },
+      error: () => {
+        const dialogRef = this.dialog.open(InfoDialog, {
+          width: '350px',
+          data: {
+            titulo: 'Servicio no disponible',
+            mensaje: 'El servicio no está disponible en este momento.',
+            textoBoton: 'Aceptar'
+          }
+        });
+
+        dialogRef.afterClosed().subscribe(() => {
+          this.router.navigate(['/']);
+        });
+      }
     });
   }
 
@@ -35,6 +57,8 @@ export class Login {
   }
 
   onSubmit() {
+    if (!this.apiRunning) return;
+
     if (this.form.invalid) {
       this.dialog.open(InfoDialog, {
         width: '350px',
@@ -48,35 +72,33 @@ export class Login {
     }
 
     const { username, password } = this.form.value;
-    this.apiRunning = true;
 
-    this.auth.login(username!, password!).subscribe({
-      next: (users) => {
-        this.apiRunning = false;
-        if (users.length > 0) {
-          this.router.navigate(['/recetas']);
-        } else {
+    this.auth.login(username!, password!)
+      .subscribe({
+        next: (users) => {
+          if (users.length > 0) {
+            this.router.navigate(['/recetas']);
+          } else {
+            this.dialog.open(InfoDialog, {
+              width: '350px',
+              data: {
+                titulo: 'Error',
+                mensaje: 'Usuario o contraseña incorrectos',
+                textoBoton: 'Aceptar'
+              }
+            });
+          }
+        },
+        error: () => {
           this.dialog.open(InfoDialog, {
             width: '350px',
             data: {
               titulo: 'Error',
-              mensaje: 'Usuario o contraseña incorrectos',
+              mensaje: 'No se pudo conectar con el servidor.',
               textoBoton: 'Aceptar'
             }
           });
         }
-      },
-      error: () => {
-        this.apiRunning = false;
-        this.dialog.open(InfoDialog, {
-          width: '350px',
-          data: {
-            titulo: 'Error',
-            mensaje: 'No se pudo conectar con el servidor. Inténtalo más tarde.',
-            textoBoton: 'Aceptar'
-          }
-        });
-      }
-    });
+      });
   }
 }
