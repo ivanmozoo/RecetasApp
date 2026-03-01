@@ -3,6 +3,7 @@ import { Router, RouterLink } from '@angular/router';
 import { Auth } from '../../services/auth';
 import { ConfirmDialog } from '../confirm-dialog/confirm-dialog';
 import { MatDialog } from '@angular/material/dialog';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-recetas-navbar',
@@ -16,17 +17,22 @@ export class RecetasNavbar {
   btnRegistro = 'REGISTRO';
 
   currentUser: { username: string } | null = null;
+  private sub!: Subscription;
 
   constructor(
     public auth: Auth,
     private router: Router,
     private dialog: MatDialog
-  ) {
-    this.loadUser();
+  ) { }
+
+  ngOnInit() {
+    this.sub = this.auth.currentUser$.subscribe(user => {
+      this.currentUser = user;
+    });
   }
 
-  loadUser() {
-    this.currentUser = this.auth.getCurrentUser();
+  ngOnDestroy() {
+    this.sub.unsubscribe();
   }
 
   logout() {

@@ -16,6 +16,7 @@ import { noEspacios } from '../../directives/no-espacios';
 export class Login {
   mostrarPassword = false;
   form;
+  apiRunning = false;
 
   constructor(
     private fb: FormBuilder,
@@ -47,16 +48,31 @@ export class Login {
     }
 
     const { username, password } = this.form.value;
+    this.apiRunning = true;
 
-    this.auth.login(username!, password!).subscribe(users => {
-      if (users.length > 0) {
-        this.router.navigate(['/recetas']);
-      } else {
+    this.auth.login(username!, password!).subscribe({
+      next: (users) => {
+        this.apiRunning = false;
+        if (users.length > 0) {
+          this.router.navigate(['/recetas']);
+        } else {
+          this.dialog.open(InfoDialog, {
+            width: '350px',
+            data: {
+              titulo: 'Error',
+              mensaje: 'Usuario o contraseña incorrectos',
+              textoBoton: 'Aceptar'
+            }
+          });
+        }
+      },
+      error: () => {
+        this.apiRunning = false;
         this.dialog.open(InfoDialog, {
           width: '350px',
           data: {
             titulo: 'Error',
-            mensaje: 'Usuario o contraseña incorrectos',
+            mensaje: 'No se pudo conectar con el servidor. Inténtalo más tarde.',
             textoBoton: 'Aceptar'
           }
         });

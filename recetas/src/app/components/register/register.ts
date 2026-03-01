@@ -24,13 +24,25 @@ export class Register {
   ) {
     this.form = this.fb.group({
       username: ['', [Validators.required, noEspacios]],
-      password: ['', [Validators.required, noEspacios]],
+      password: ['', [Validators.required, noEspacios, Validators.minLength(6)]],
       confirmPassword: ['', [Validators.required, noEspacios]]
     });
   }
 
   onSubmit() {
     if (this.form.invalid) {
+      if (this.form.get('password')?.hasError('minlength')) {
+        this.dialog.open(InfoDialog, {
+          width: '350px',
+          data: {
+            titulo: 'Error',
+            mensaje: 'No puedes crear una contraseña de menos de 6 caracteres',
+            textoBoton: 'Aceptar'
+          }
+        });
+        return;
+      }
+
       this.dialog.open(InfoDialog, {
         width: '350px',
         data: {

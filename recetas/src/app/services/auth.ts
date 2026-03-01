@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { Observable, switchMap, tap } from 'rxjs';
+import { BehaviorSubject, Observable, switchMap, tap } from 'rxjs';
 import { User } from '../interfaces/user';
 
 @Injectable({
@@ -10,6 +10,8 @@ import { User } from '../interfaces/user';
 export class Auth {
   private apiUrl = 'http://localhost:3000/users';
   private storageKey = 'currentUser';
+  private currentUserSubject = new BehaviorSubject<User | null>(this.getCurrentUser());
+  currentUser$ = this.currentUserSubject.asObservable();
 
   constructor(private http: HttpClient, private router: Router) { }
 
@@ -34,6 +36,7 @@ export class Auth {
         tap(users => {
           if (users.length > 0) {
             localStorage.setItem(this.storageKey, JSON.stringify(users[0]));
+            this.currentUserSubject.next(users[0]);
           }
         })
       );
