@@ -32,7 +32,6 @@ export class Register {
   }
 
   ngOnInit() {
-
     this.auth.userExist('test').subscribe({
       next: () => {
         this.apiRunning = true;

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 @Component({
@@ -8,5 +8,11 @@ import { RouterLink } from '@angular/router';
   styleUrl: './landing.css',
 })
 export class Landing {
+  constructor(
+    private cd: ChangeDetectorRef
+  ) {}
 
+  ngOnInit() {
+    this.cd.detectChanges;
+  }
 }
