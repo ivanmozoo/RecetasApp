@@ -1,0 +1,11 @@
+# netlify.toml
+[build]
+  publish = "dist/recetas/browser"
+  command = "npx ng build --configuration production"
+
+[[redirects]]
+  from = "/*"
+  to = "http://34.233.232.187:3000/:splat"
+  status = 200
+  force = true
+  # preservePath = true # opcional
