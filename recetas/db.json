@@ -1051,14 +1051,14 @@
   ],
   "users": [
     {
-      "id": 1,
+      "id": "1",
       "username": "ivan",
       "password": "123456789"
     },
     {
-      "id": 2,
+      "id": "2",
       "username": "perico",
-      "password": "aaaaaa"
+      "password": "1234567"
     }
   ]
 }

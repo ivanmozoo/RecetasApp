@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class Recetas {
 
-  private apiUrl = 'http://localhost:3000/recetas';
+  private apiUrl = 'http://34.233.232.187:3000/recetas';
 
   constructor(private http: HttpClient) { }
 
