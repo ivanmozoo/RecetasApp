@@ -1058,7 +1058,12 @@
     {
       "id": "2",
       "username": "perico",
-      "password": "1234567"
+      "password": "12345678"
+    },
+    {
+      "id": "3",
+      "username": "pepe",
+      "password": "12345678"
     }
   ]
 }
