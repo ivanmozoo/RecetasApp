@@ -8,7 +8,7 @@ import { User } from '../interfaces/user';
   providedIn: 'root',
 })
 export class Auth {
-  private apiUrl = 'http://34.233.232.187:3000/users';
+  private apiUrl = '/api/users';
   private storageKey = 'currentUser';
   private currentUserSubject = new BehaviorSubject<User | null>(this.getCurrentUser());
   currentUser$ = this.currentUserSubject.asObservable();

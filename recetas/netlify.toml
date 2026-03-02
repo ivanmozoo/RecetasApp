@@ -4,7 +4,7 @@
   command = "npx ng build --configuration production"
 
 [[redirects]]
-  from = "/*"
+  from = "/api/*"
   to = "http://34.233.232.187:3000/:splat"
   status = 200
   force = true
