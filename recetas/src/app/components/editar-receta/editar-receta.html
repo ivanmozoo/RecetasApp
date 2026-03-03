@@ -1,5 +1,5 @@
 <main class="min-vh-90 d-flex flex-column">
-    <div class="container py-5 mb-5 animation">
+    <div class="container py-5 mb-5 animation container-editar">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <a [routerLink]="['/receta-detalle', recetaId]" class="btn-volver text-decoration-none">
                 <i class="bi bi-arrow-left"></i> Volver a la receta
@@ -45,11 +45,11 @@
                 <form [formGroup]="imagenFormGroup">
                     <ng-template matStepLabel>Imagen</ng-template>
                     <div class="mb-3 mt-2">
-                        <button mat-raised-button color="primary" type="button" (click)="fileInput.click()">
+                        <button mat-raised-button class="mb-4" color="primary" type="button" (click)="fileInput.click()">
                             Seleccionar imagen
                         </button>
                         @if (foto.image) {
-                        <span class="ms-3">
+                        <br><span>
                             Imagen actual cargada
                         </span>
                         }

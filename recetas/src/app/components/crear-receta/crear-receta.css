@@ -79,7 +79,7 @@
   overflow: hidden;
   border-radius: 16px;
   margin-bottom: 20px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 .resumen-imagen img {
@@ -109,6 +109,7 @@
 .resumen-botones {
   display: flex;
   justify-content: space-between;
+  gap: 15px;
   margin-top: 40px;
 }
 
@@ -121,5 +122,35 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .titulo-crear {
+    font-size: 20px;
+  }
+
+  .btn-volver {
+    font-size: 16px;
+  }
+
+  .container-crear {
+    padding-left: 28px;
+    padding-right: 28px;
+  }
+}
+
+@media (max-width: 576px) {
+  .titulo-crear {
+    font-size: 18px;
+  }
+
+  .btn-volver {
+    font-size: 14px;
+  }
+
+  .container-crear {
+    padding-left: 28px;
+    padding-right: 28px;
   }
 }

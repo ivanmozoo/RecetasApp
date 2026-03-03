@@ -48,3 +48,48 @@
     transform: translateY(0);
   }
 }
+
+@media (max-width: 768px) {
+  .landing-hero {
+    height: calc(100vh - 60px);
+  }
+
+  .hero-content {
+    padding-left: 44px;
+    padding-right: 44px;
+  }
+
+  .landing-hero h1 {
+    font-size: 2.2rem;
+    line-height: 1.2;
+  }
+
+  .landing-hero p {
+    font-size: 1rem;
+  }
+
+  .landing-hero .btn {
+    font-size: 0.95rem;
+    padding: 10px 20px;
+  }
+}
+
+@media (max-width: 576px) {
+  .landing-hero h1 {
+    font-size: 1.8rem;
+  }
+
+  .landing-hero p {
+    font-size: 0.95rem;
+  }
+
+  .landing-hero .btn {
+    font-size: 0.9rem;
+    padding: 8px 18px;
+  }
+
+  .hero-content {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+}

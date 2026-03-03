@@ -1,5 +1,5 @@
 .login-wrapper {
-    min-height: calc(100vh - 160px);
+    min-height: calc(100vh - 150px);
     background: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.7)), url('https://images.unsplash.com/photo-1495195129352-aeb325a55b65?auto=format&fit=crop&w=1920&q=80');
     background-size: cover;
     background-position: center;
@@ -83,8 +83,15 @@
 }
 
 @media (max-width: 576px) {
+    .login-wrapper {
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+
     .login-card {
-        padding: 30px 20px !important;
-        border-radius: 1.5rem !important;
+        max-width: 340px;
+        margin: 0 auto;
+        padding: 25px 18px !important;
+        border-radius: 1.4rem !important;
     }
 }

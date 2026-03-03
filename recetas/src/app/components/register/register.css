@@ -1,5 +1,5 @@
 .register-wrapper {
-    min-height: calc(100vh - 160px);
+    min-height: calc(100vh - 150px);
     background: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.7)), url('https://images.unsplash.com/photo-1495195129352-aeb325a55b65?auto=format&fit=crop&w=1920&q=80');
     background-size: cover;
     background-position: center;
@@ -80,8 +80,13 @@
 }
 
 @media (max-width: 576px) {
+    .register-wrapper {
+        padding: 0 15px;
+    }
+
     .register-card {
-        padding: 30px 20px !important;
+        padding: 25px 18px !important;
         border-radius: 1.5rem !important;
+        max-width: 100%;
     }
 }

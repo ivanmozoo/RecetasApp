@@ -9,11 +9,13 @@
   transition: all 0.2s ease-in-out;
 }
 
-.form-control:hover, .form-select:hover {
+.form-control:hover,
+.form-select:hover {
   border-color: rgb(153, 214, 255);
 }
 
-.form-control:focus, .form-select:focus {
+.form-control:focus,
+.form-select:focus {
   border-color: rgb(153, 214, 255);
   box-shadow: 0 0 0 0.2rem rgba(153, 214, 255, 0.25);
 }
@@ -42,6 +44,8 @@
 .recetas-wrapper {
   max-width: 1800px;
   margin: 0 auto;
+  padding-left: 3rem;
+  padding-right: 3rem;
 }
 
 .crear-btn {
@@ -75,5 +79,50 @@
   .form-control {
     font-size: 14px;
   }
+}
 
+@media (max-width: 576px) {
+  .recetas-wrapper {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .busqueda {
+    border-radius: 18px;
+    padding: 16px;
+    background: white;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  }
+
+  .busqueda .row {
+    gap: 12px;
+  }
+
+  .input-group {
+    border-radius: 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  }
+
+  .input-group-text {
+    border-radius: 30px 0 0 30px;
+  }
+
+  .form-control,
+  .form-select {
+    border-radius: 0 30px 30px 0;
+    font-size: 15px;
+    padding: 10px 14px;
+  }
+
+  .crear-btn {
+    height: 48px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 30px;
+    box-shadow: 0 8px 18px rgba(13, 110, 253, 0.3);
+  }
+
+  .crear-btn:active {
+    transform: scale(0.97);
+  }
 }

@@ -1,12 +1,12 @@
 .logo {
-  height: 50px;
+  height: 45px;
   filter:
     drop-shadow(-2px -2px 0 white) drop-shadow(2px -2px 0 white) drop-shadow(-2px 2px 0 white) drop-shadow(2px 2px 0 white);
 }
 
 .brand-text {
-  font-size: 2rem;
-  letter-spacing: 2px;
+  font-size: 1.8rem;
+  letter-spacing: 1px;
   transition: 0.3s ease;
   color: rgb(33, 37, 41);
   filter:
@@ -15,6 +15,7 @@
 
 .navbar-brand {
   transition: transform 0.3s ease, text-shadow 0.3s ease;
+  gap: 20px;
 }
 
 .navbar-brand:hover {
@@ -22,19 +23,8 @@
   text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.7);
 }
 
-@media (max-width: 992px) {
-  .brand-text {
-    font-size: 1.6rem;
-  }
-
-  .logo {
-    height: 42px;
-  }
-
-  .botones-nav .btn {
-    padding: 6px 14px;
-    font-size: 0.9rem;
-  }
+.botones-nav {
+  gap: 24px;
 }
 
 @media (max-width: 768px) {
@@ -43,12 +33,21 @@
   }
 
   .logo {
-    height: 38px;
+    height: 30px;
+  }
+
+  .botones-nav {
+    gap: 16px;
   }
 
   .botones-nav .btn {
     padding: 6px 12px;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
+    margin-right: 0 !important;
+  }
+
+  .navbar-brand {
+    gap: 12px;
   }
 }
 
@@ -58,11 +57,19 @@
   }
 
   .logo {
-    height: 32px;
+    height: 26px;
   }
 
   .botones-nav .btn {
     padding: 6px 12px;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
+  }
+
+  .botones-nav {
+    gap: 12px;
+  }
+
+  .navbar-brand {
+    gap: 10px;
   }
 }
