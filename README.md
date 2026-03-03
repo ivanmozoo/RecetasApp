@@ -1,3 +1,7 @@
+![Angular](https://img.shields.io/badge/Angular-red)
+![TypeScript](https://img.shields.io/badge/TypeScript-blue)
+![Bootstrap](https://img.shields.io/badge/Bootstrap-purple)
+
 # 🍳 RECETAS
 
 ## 📌 Descripción
@@ -5,15 +9,39 @@
 **RECETAS** es una aplicación web dónde los usuarios pueden ver y filtrar distintas recetas desde el Listado de recetas, pueden crearlas, editarlas o eliminarlas. 
 Una vez creada, la receta se muestra en el listado junto a las demás. Todos los datos de las recetas se almacenan y se consumen desde una API.
 
-La aplicación está creada en Angular y usa como tecnologías:
+## 🛠 Tecnologías
 
+- Angular
 - TypeScript
 - JavaScript
-- CSS Plano
 - Bootstrap
-- Json Server
+- CSS
+- JSON Server
 
----
+## 🌍 Links
+
+- [Web Recetas](https://recetas-iml.netlify.app/ "Ir a la web")
+
+### 🚀 API Endpoints
+
+| Método | Endpoint | Descripción |
+|--------|----------|------------|
+| GET | [/users](http://34.233.232.187:3000/users) | Obtiene los usuarios |
+| GET | [/recetas](http://34.233.232.187:3000/recetas) | Obtiene las recetas |
+
+## ⚙️ Instalación y uso en local
+
+1. Clonar el repositorio
+   - git clone <URL_DEL_REPO>
+
+2. Instalar dependencias
+   - npm install
+
+3. Ejecutar el proyecto
+   - ng serve **o** npx ng serve 
+
+4. Ejecutar JSON Server
+   - json-server --watch db.json --port 3000 --limit 10mb
 
 ## ⚙️ Funcionalidades
 
